@@ -1,0 +1,24 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<LanguageData>
+  
+  <LetterLabelCliques>Cliques forming</LetterLabelCliques>
+  <CliquesFormed>{0} and {1} are separating the colony into cliques over their rivalry. They and their friends may start fights with each other!</CliquesFormed>
+  
+  <LetterLabelHomesick>Colonist homesick</LetterLabelHomesick>
+  <ColonistHomesick>{0} is feeling quite homesick, and may spread the feeling to others that {PAWN_pronoun} speaks to.</ColonistHomesick>
+  
+  <LetterLabelHomesickCured>Homesickness abates</LetterLabelHomesickCured>
+  <HomesickCured>The members of your colony that were homesick have recovered.</HomesickCured>
+  
+  <LetterLabelQuarrel>Colonists quarrel</LetterLabelQuarrel>
+  <ColonistsQuarrel>{0} and {1} have fallen out over a disagreement.</ColonistsQuarrel>
+  
+  <LetterLabelSabotage>Sabotage</LetterLabelSabotage>
+  <SaboteurRevealedFaction>{0} has been revealed as an infiltrator from {1}! {PAWN_pronoun} has been sabotaging your colony in secret while pretending to be your ally.</SaboteurRevealedFaction>
+  <SaboteurRevealed>{0} has been revealed as an infiltrator from an enemy faction! {PAWN_pronoun} has been sabotaging your colony in secret while pretending to be your ally.</SaboteurRevealed>
+  
+  <LetterLabelThief>Thief</LetterLabelThief>
+  <ThiefRevealed>{0} has spotted a thief from {1} attempting to sneak into the colony! {PAWN_pronoun} is attacking now that {PAWN_pronoun} is caught.</ThiefRevealed>
+  <ThiefInjured>A thief from {1} has been caught attempting to sneak into the colony!</ThiefInjured>
+  
+</LanguageData>

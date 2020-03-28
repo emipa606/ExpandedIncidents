@@ -1,0 +1,13 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<LanguageData>
+
+  <Saboteur.label>サボタージュ</Saboteur.label>
+  <Saboteur.stages.0.label>秘密</Saboteur.stages.0.label>
+
+  <PotentialSaboteur.label>潜在的な妨害者</PotentialSaboteur.label>
+  <PotentialSaboteur.stages.0.label>秘密</PotentialSaboteur.stages.0.label>
+
+  <Thief.label>泥棒</Thief.label>
+  <Thief.stages.0.label>秘密</Thief.stages.0.label>
+
+</LanguageData>

@@ -1,0 +1,107 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="14.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{83960198-EE67-473E-AE85-3138BE23A47E}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>ExpandedIncidents</RootNamespace>
+    <AssemblyName>ExpandedIncidents</AssemblyName>
+    <TargetFrameworkVersion>v4.7.2</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+    <TargetFrameworkProfile />
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>..\..\1.1\Assemblies\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <AllowUnsafeBlocks>true</AllowUnsafeBlocks>
+    <Prefer32Bit>false</Prefer32Bit>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <Prefer32Bit>false</Prefer32Bit>
+  </PropertyGroup>
+  <PropertyGroup>
+    <StartupObject />
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="0Harmony, Version=2.0.0.8, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\Lib.Harmony.2.0.0.8\lib\net472\0Harmony.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="Assembly-CSharp">
+      <HintPath>..\..\..\..\RimWorldWin64_Data\Managed\Assembly-CSharp.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="HugsLib, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\UnlimitedHugs.Rimworld.HugsLib.7.1.1\lib\net472\HugsLib.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="Psychology">
+      <HintPath>..\..\..\..\..\..\workshop\content\294100\2016263135\v1.1\Assemblies\Psychology.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Runtime.InteropServices.RuntimeInformation" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Xml" />
+    <Reference Include="UnityEngine.CoreModule">
+      <HintPath>..\..\..\..\RimWorldWin64_Data\Managed\UnityEngine.CoreModule.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Harmony\PawnUIOverlay.cs" />
+    <Compile Include="Harmony\Pawn_Ownership.cs" />
+    <Compile Include="ExpandedIncidentsBase.cs" />
+    <Compile Include="Incidents\Alert_Homesick.cs" />
+    <Compile Include="Incidents\Alert_CliqueMembers.cs" />
+    <Compile Include="Harmony\Building_Door.cs" />
+    <Compile Include="Harmony\ThingSelectionUtility.cs" />
+    <Compile Include="Incidents\Hediff_Thief.cs" />
+    <Compile Include="Incidents\Workers\IncidentWorker_HomesickCured.cs" />
+    <Compile Include="Harmony\IncidentWorker_RaidEnemy.cs" />
+    <Compile Include="Harmony\InteractionWorker.cs" />
+    <Compile Include="Harmony\Pawn.cs" />
+    <Compile Include="Incidents\Workers\IncidentWorker_Thief.cs" />
+    <Compile Include="Defs\JobDefOfIncidents.cs" />
+    <Compile Include="Incidents\Hediff_Saboteur.cs" />
+    <Compile Include="Incidents\Workers\IncidentWorker_Homesick.cs" />
+    <Compile Include="Incidents\Workers\IncidentWorker_CliquesForm.cs" />
+    <Compile Include="Incidents\Workers\IncidentWorker_Sabotage.cs" />
+    <Compile Include="Incidents\Workers\IncidentWorker_Quarrel.cs" />
+    <Compile Include="Incidents\JobDriver_Sabotage.cs" />
+    <Compile Include="Defs\HediffDefOfIncidents.cs" />
+    <Compile Include="Incidents\Toils_Sabotage.cs" />
+    <Compile Include="Defs\ThoughtDefOfIncidents.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Util\Graphic_Invisible.cs" />
+    <Compile Include="Util\PawnGraphicSet_Invisible.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="packages.config" />
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>
