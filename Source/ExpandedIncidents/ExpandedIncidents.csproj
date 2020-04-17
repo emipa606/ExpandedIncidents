@@ -64,6 +64,10 @@
       <HintPath>..\..\..\..\RimWorldWin64_Data\Managed\UnityEngine.CoreModule.dll</HintPath>
       <Private>False</Private>
     </Reference>
+    <Reference Include="UnityEngine.IMGUIModule">
+      <HintPath>..\..\..\..\RimWorldWin64_Data\Managed\UnityEngine.IMGUIModule.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Harmony\PawnUIOverlay.cs" />
@@ -90,6 +94,9 @@
     <Compile Include="Incidents\Toils_Sabotage.cs" />
     <Compile Include="Defs\ThoughtDefOfIncidents.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Settings\EI_Mod.cs" />
+    <Compile Include="Settings\EI_ModSettings.cs" />
+    <Compile Include="Settings\WorldComp.cs" />
     <Compile Include="Util\Graphic_Invisible.cs" />
     <Compile Include="Util\PawnGraphicSet_Invisible.cs" />
   </ItemGroup>
