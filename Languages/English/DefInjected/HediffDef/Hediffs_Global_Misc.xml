@@ -1,0 +1,14 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<LanguageData>
+
+  <Saboteur.label>saboteur</Saboteur.label>
+  <Saboteur.stages.0.label>hidden</Saboteur.stages.0.label>
+
+  <PotentialSaboteur.label>potential saboteur</PotentialSaboteur.label>
+  <PotentialSaboteur.stages.0.label>hidden</PotentialSaboteur.stages.0.label>
+
+  <Thief.label>thief</Thief.label>
+  <Thief.stages.0.label>hidden</Thief.stages.0.label>
+
+
+</LanguageData>

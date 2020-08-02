@@ -1,6 +1,5 @@
-﻿<?xml version="1.0" encoding="utf-8" ?>
+﻿<?xml version="1.0" encoding="utf-8"?>
 <Defs>
-
   <HediffDef>
     <defName>Saboteur</defName>
     <hediffClass>ExpandedIncidents.Hediff_Saboteur</hediffClass>
@@ -13,7 +12,6 @@
       </li>
     </stages>
   </HediffDef>
-  
   <HediffDef>
     <defName>PotentialSaboteur</defName>
     <initialSeverity>1</initialSeverity>
@@ -25,7 +23,6 @@
       </li>
     </stages>
   </HediffDef>
-
   <HediffDef>
     <defName>Thief</defName>
     <hediffClass>ExpandedIncidents.Hediff_Thief</hediffClass>
@@ -38,5 +35,4 @@
       </li>
     </stages>
   </HediffDef>
-
 </Defs>

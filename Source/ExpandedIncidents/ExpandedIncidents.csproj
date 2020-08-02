@@ -17,7 +17,7 @@
     <DebugSymbols>true</DebugSymbols>
     <DebugType>full</DebugType>
     <Optimize>false</Optimize>
-    <OutputPath>..\..\1.1\Assemblies\</OutputPath>
+    <OutputPath>..\..\1.2\Assemblies\</OutputPath>
     <DefineConstants>DEBUG;TRACE</DefineConstants>
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
@@ -46,7 +46,7 @@
       <Private>False</Private>
     </Reference>
     <Reference Include="Psychology">
-      <HintPath>..\..\..\..\..\..\workshop\content\294100\2016263135\v1.1\Assemblies\Psychology.dll</HintPath>
+      <HintPath>..\..\..\..\..\..\workshop\content\294100\2016263135\v1.2\Assemblies\Psychology.dll</HintPath>
       <Private>False</Private>
     </Reference>
     <Reference Include="System" />

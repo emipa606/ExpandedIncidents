@@ -1,6 +1,5 @@
-﻿<?xml version="1.0" encoding="utf-8" ?>
+﻿<?xml version="1.0" encoding="utf-8"?>
 <Defs>
-  
   <ThoughtDef>
     <defName>Quarrel</defName>
     <thoughtClass>Thought_MemorySocial</thoughtClass>
@@ -15,7 +14,6 @@
       </li>
     </stages>
   </ThoughtDef>
-  
   <ThoughtDef>
     <defName>Clique</defName>
     <thoughtClass>Thought_MemorySocial</thoughtClass>
@@ -29,7 +27,6 @@
       </li>
     </stages>
   </ThoughtDef>
-  
   <ThoughtDef>
     <defName>CliqueFollower</defName>
     <thoughtClass>Thought_MemorySocial</thoughtClass>
@@ -43,5 +40,4 @@
       </li>
     </stages>
   </ThoughtDef>
-  
 </Defs>

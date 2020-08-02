@@ -1,6 +1,5 @@
-﻿<?xml version="1.0" encoding="utf-8" ?>
+﻿<?xml version="1.0" encoding="utf-8"?>
 <Defs>
-
   <IncidentDef>
     <defName>Quarrel</defName>
     <label>friends quarrel</label>
@@ -12,7 +11,6 @@
     <minRefireDays>15</minRefireDays>
     <category>ThreatSmall</category>
   </IncidentDef>
-
   <IncidentDef>
     <defName>Homesick</defName>
     <label>homesick</label>
@@ -24,7 +22,6 @@
     <minRefireDays>30</minRefireDays>
     <category>ThreatSmall</category>
   </IncidentDef>
-
   <IncidentDef>
     <defName>HomesickCured</defName>
     <label>homesickness cured</label>
@@ -36,7 +33,6 @@
     <minRefireDays>5</minRefireDays>
     <category>Misc</category>
   </IncidentDef>
-
   <IncidentDef>
     <defName>Clique</defName>
     <label>cliques forming</label>
@@ -48,7 +44,6 @@
     <minRefireDays>90</minRefireDays>
     <category>ThreatSmall</category>
   </IncidentDef>
-
   <IncidentDef>
     <defName>Sabotage</defName>
     <label>sabotage</label>
@@ -60,7 +55,6 @@
     <minRefireDays>120</minRefireDays>
     <category>ThreatBig</category>
   </IncidentDef>
-
   <IncidentDef>
     <defName>Thief</defName>
     <label>thief</label>
@@ -72,5 +66,4 @@
     <minRefireDays>5</minRefireDays>
     <category>ThreatSmall</category>
   </IncidentDef>
-  
 </Defs>

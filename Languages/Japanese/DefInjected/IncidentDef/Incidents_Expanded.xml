@@ -1,11 +1,9 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <LanguageData>
-
   <Quarrel.label>内部抗争</Quarrel.label>
   <Homesick.label>ホームシックになった</Homesick.label>
   <HomesickCured.label>ホームシックが消えた</HomesickCured.label>
   <Clique.label>内部派閥が形成された</Clique.label>
   <Sabotage.label>サボタージュ</Sabotage.label>
   <Thief.label>泥棒</Thief.label>
-
 </LanguageData>

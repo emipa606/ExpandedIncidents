@@ -1,24 +1,17 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <LanguageData>
-
   <LetterLabelCliques>内部派閥が生まれた</LetterLabelCliques>
   <CliquesFormed>{0}と{1}によって、コロニーを分裂させて対立させています。リーダーである彼らとその友人はお互いの顔を見ると喧嘩を始めるようになります！</CliquesFormed>
-
   <LetterLabelHomesick>ホームシックになった</LetterLabelHomesick>
   <ColonistHomesick>{0}はホームシックの思いが強くなった結果、{PAWN_pronoun}と会話することで他の入植者に同じホームシックの感情を広げる可能性があります。</ColonistHomesick>
-
   <LetterLabelHomesickCured>ホームシックが収まった</LetterLabelHomesickCured>
   <HomesickCured>ホームシックだったあなたのコロニーの入植者が回復しました。</HomesickCured>
-
   <LetterLabelQuarrel>入植者同士の喧嘩</LetterLabelQuarrel>
   <ColonistsQuarrel>{0}と{1}は意見の不一致から疎遠になりました。</ColonistsQuarrel>
-
   <LetterLabelSabotage>サボタージュ</LetterLabelSabotage>
   <SaboteurRevealedFaction>{0}は{1}からの工作員だと明らかになりました！ {PAWN_pronoun}はあなたの同盟者であるふりをしながら、秘密裏にあなたのコロニーを妨害しています。</SaboteurRevealedFaction>
   <SaboteurRevealed>{0}は敵対派閥からの工作員だと明らかになりました！ {PAWN_pronoun}はあなたの同盟者であるふりをしながら、秘密裏にあなたのコロニーを妨害しています。</SaboteurRevealed>
-
   <LetterLabelThief>泥棒</LetterLabelThief>
   <ThiefRevealed>{0}は、コロニーに潜入しようとしていた{1}から来た泥棒を見つけました！ {PAWN_pronoun}は逮捕されそうになったので、{PAWN_pronoun}は暴れています。</ThiefRevealed>
   <ThiefInjured>コロニーに侵入しようとしていた{1}の泥棒を捕らえました！</ThiefInjured>
-
 </LanguageData>

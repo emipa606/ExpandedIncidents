@@ -1,11 +1,8 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <LanguageData>
-
   <ColonistsHomesickAlert>ホームシックになった</ColonistsHomesickAlert>
   <ColonistHomesickAlert>ホームシックになった</ColonistHomesickAlert>
   <HomesickDesc>これらの入植者がホームシックになりました：\n\n{0}\n彼らは感情が落ち着くまで、望郷の念で悲しくなります。彼らはコロニー内の関係性に応じて、込入った会話をした他の入植者にホームシックを広めてしまうようになります。</HomesickDesc>
-
   <CliqueMembers>内部派閥が生まれた</CliqueMembers>
   <CliqueMembersDesc>あなたのコロニーには、以下の敵対する内部派閥が存在します：\n\n{0}\n\n敵対する内部派閥のメンバーは、同じマップ内に内部派閥のリーダーが生存している限り、リーダーへの忠誠心(友好関係度)が、お互いの関係好感度よりも高い場合、喧嘩を開始する可能性があります。\n両方の内部派閥メンバーに属している入植者は、同じ様に両方に所属しているメンバーを除いて、両方の内部派閥メンバーから敵として認識されます。\n\nある程度の四半期(季節)が経過した後に、内部派閥は最終的に解散するでしょう。</CliqueMembersDesc>
-
 </LanguageData>
