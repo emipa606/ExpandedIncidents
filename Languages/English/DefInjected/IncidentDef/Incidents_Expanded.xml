@@ -1,12 +1,9 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <LanguageData>
-
   <Quarrel.label>friends quarrel</Quarrel.label>
   <Homesick.label>homesick</Homesick.label>
   <HomesickCured.label>homesickness cured</HomesickCured.label>
   <Clique.label>cliques forming</Clique.label>
   <Sabotage.label>sabotage</Sabotage.label>
   <Thief.label>thief</Thief.label>
-
-
 </LanguageData>

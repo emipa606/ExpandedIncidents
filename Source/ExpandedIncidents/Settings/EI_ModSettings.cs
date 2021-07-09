@@ -1,6 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
+﻿using System.Linq;
 using RimWorld;
 using Verse;
 
@@ -18,8 +16,8 @@ namespace ExpandedIncidents.Settings
 
         public void ChangeDef()
         {
-            List<IncidentDef> list = DefDatabase<IncidentDef>.AllDefs.ToList<IncidentDef>();
-            foreach (IncidentDef incidentDef in list)
+            var list = DefDatabase<IncidentDef>.AllDefs.ToList();
+            foreach (var incidentDef in list)
             {
                 switch (incidentDef.defName)
                 {
@@ -47,8 +45,8 @@ namespace ExpandedIncidents.Settings
 
         public static void ChangeDefPost()
         {
-            List<IncidentDef> list = DefDatabase<IncidentDef>.AllDefs.ToList<IncidentDef>();
-            foreach (IncidentDef incidentDef in list)
+            var list = DefDatabase<IncidentDef>.AllDefs.ToList();
+            foreach (var incidentDef in list)
             {
                 switch (incidentDef.defName)
                 {
@@ -78,14 +76,12 @@ namespace ExpandedIncidents.Settings
         public override void ExposeData()
         {
             base.ExposeData();
-            Scribe_Values.Look<float>(ref EI_ModSettings.QuarrelBaseChance, "QuarrelBaseChance", 0.3f, false);
-            Scribe_Values.Look<float>(ref EI_ModSettings.HomesickBaseChance, "HomesickBaseChance", 0.1f, false);
-            Scribe_Values.Look<float>(ref EI_ModSettings.HomesickCuredBaseChance, "HomesickCuredBaseChance", 0.05f, false);
-            Scribe_Values.Look<float>(ref EI_ModSettings.CliqueBaseChance, "CliqueBaseChance", 0.3f, false);
-            Scribe_Values.Look<float>(ref EI_ModSettings.SabotageBaseChance, "SabotageBaseChance", 0.5f, false);
-            Scribe_Values.Look<float>(ref EI_ModSettings.ThiefBaseChance, "ThiefBaseChance", 2.0f, false);
+            Scribe_Values.Look(ref QuarrelBaseChance, "QuarrelBaseChance", 0.3f);
+            Scribe_Values.Look(ref HomesickBaseChance, "HomesickBaseChance", 0.1f);
+            Scribe_Values.Look(ref HomesickCuredBaseChance, "HomesickCuredBaseChance", 0.05f);
+            Scribe_Values.Look(ref CliqueBaseChance, "CliqueBaseChance", 0.3f);
+            Scribe_Values.Look(ref SabotageBaseChance, "SabotageBaseChance", 0.5f);
+            Scribe_Values.Look(ref ThiefBaseChance, "ThiefBaseChance", 2.0f);
         }
-
-
     }
 }

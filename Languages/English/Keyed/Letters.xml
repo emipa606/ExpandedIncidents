@@ -14,5 +14,4 @@
   <LetterLabelThief>Thief</LetterLabelThief>
   <ThiefRevealed>{0} has spotted a thief from {1} attempting to sneak into the colony! {PAWN_pronoun} is attacking now that {PAWN_pronoun} is caught.</ThiefRevealed>
   <ThiefInjured>A thief from {1} has been caught attempting to sneak into the colony!</ThiefInjured>
-
 </LanguageData>

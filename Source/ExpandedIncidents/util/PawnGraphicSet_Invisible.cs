@@ -1,55 +1,50 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using Verse;
-using Verse.AI;
-using RimWorld;
+﻿using Verse;
 
 namespace ExpandedIncidents
 {
     public class PawnGraphicSet_Invisible : PawnGraphicSet
     {
+        public PawnGraphicSet_Invisible(Pawn pawn) : base(pawn)
+        {
+            this.pawn = pawn;
+            ResolveAllGraphics();
+        }
+
         public new void ResolveAllGraphics()
         {
-            this.ClearCache();
-            if (this.pawn.RaceProps.Humanlike)
+            ClearCache();
+            if (pawn.RaceProps.Humanlike)
             {
-                this.nakedGraphic = new Graphic_Invisible();
-                this.rottingGraphic = new Graphic_Invisible();
-                this.dessicatedGraphic = new Graphic_Invisible();
-                this.headGraphic = null;
-                this.desiccatedHeadGraphic = new Graphic_Invisible();
-                this.skullGraphic = new Graphic_Invisible();
-                this.hairGraphic = new Graphic_Invisible();
-                this.ResolveApparelGraphics();
+                nakedGraphic = new Graphic_Invisible();
+                rottingGraphic = new Graphic_Invisible();
+                dessicatedGraphic = new Graphic_Invisible();
+                headGraphic = null;
+                desiccatedHeadGraphic = new Graphic_Invisible();
+                skullGraphic = new Graphic_Invisible();
+                hairGraphic = new Graphic_Invisible();
+                ResolveApparelGraphics();
             }
             else
             {
-                PawnKindLifeStage curKindLifeStage = this.pawn.ageTracker.CurKindLifeStage;
-                this.nakedGraphic = new Graphic_Invisible();
-                this.rottingGraphic = new Graphic_Invisible();
-                if (this.pawn.RaceProps.packAnimal)
+                var curKindLifeStage = pawn.ageTracker.CurKindLifeStage;
+                nakedGraphic = new Graphic_Invisible();
+                rottingGraphic = new Graphic_Invisible();
+                if (pawn.RaceProps.packAnimal)
                 {
-                    this.packGraphic = new Graphic_Invisible();
+                    packGraphic = new Graphic_Invisible();
                 }
+
                 if (curKindLifeStage.dessicatedBodyGraphicData != null)
                 {
-                    this.dessicatedGraphic = new Graphic_Invisible();
+                    dessicatedGraphic = new Graphic_Invisible();
                 }
             }
         }
 
         public new void ResolveApparelGraphics()
         {
-            this.ClearCache();
-            this.apparelGraphics.Clear();
-        }
-
-        public PawnGraphicSet_Invisible(Pawn pawn) : base(pawn)
-        {
-            this.pawn = pawn;
-            this.ResolveAllGraphics();
+            ClearCache();
+            apparelGraphics.Clear();
         }
     }
 }

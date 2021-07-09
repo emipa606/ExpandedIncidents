@@ -1,10 +1,6 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
+﻿using HarmonyLib;
 using RimWorld;
 using Verse;
-using HarmonyLib;
 
 namespace ExpandedIncidents.Harmony
 {
@@ -14,7 +10,7 @@ namespace ExpandedIncidents.Harmony
         [HarmonyPostfix]
         public static void ThiefException(ref bool __result, Thing t)
         {
-            if (t is Pawn && ((Pawn)t).health.hediffSet.HasHediff(HediffDefOfIncidents.Thief))
+            if (t is Pawn pawn && pawn.health.hediffSet.HasHediff(HediffDefOfIncidents.Thief))
             {
                 __result = false;
             }

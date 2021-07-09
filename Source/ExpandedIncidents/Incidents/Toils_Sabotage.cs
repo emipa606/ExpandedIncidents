@@ -1,8 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using RimWorld;
+﻿using RimWorld;
 using Verse;
 using Verse.AI;
 
@@ -12,12 +8,11 @@ namespace ExpandedIncidents
     {
         public static Toil DoSabotage(TargetIndex ind)
         {
-            Toil toil = new Toil();
-            toil.defaultCompleteMode = ToilCompleteMode.Instant;
+            var toil = new Toil {defaultCompleteMode = ToilCompleteMode.Instant};
             toil.FailOnDespawnedOrNull(ind);
             toil.AddFinishAction(delegate
             {
-                Building building = (Building)toil.actor.jobs.curJob.GetTarget(ind).Thing;
+                var building = (Building) toil.actor.jobs.curJob.GetTarget(ind).Thing;
                 if (!building.GetComp<CompBreakdownable>().BrokenDown)
                 {
                     building.GetComp<CompBreakdownable>().DoBreakdown();

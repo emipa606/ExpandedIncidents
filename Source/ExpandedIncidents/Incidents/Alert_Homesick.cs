@@ -1,10 +1,6 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
+﻿using System.Linq;
 using RimWorld;
 using Verse;
-using System.Reflection;
 
 namespace ExpandedIncidents
 {
@@ -12,25 +8,19 @@ namespace ExpandedIncidents
     {
         public Alert_Homesick()
         {
-            this.explanationKey = "HomesickDesc".Translate();
+            explanationKey = "HomesickDesc".Translate();
         }
-        
+
+        protected override ThoughtDef Thought => ThoughtDefOfIncidents.Homesickness;
+
         public override string GetLabel()
         {
-            if (this.GetReport().AllCulprits.Count() == 1)
+            if (GetReport().AllCulprits.Count() == 1)
             {
                 return "ColonistHomesickAlert".Translate();
             }
+
             return "ColonistsHomesickAlert".Translate();
         }
-
-        protected override ThoughtDef Thought
-        {
-            get
-            {
-                return ThoughtDefOfIncidents.Homesickness;
-            }
-        }
-
     }
 }

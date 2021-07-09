@@ -1,5 +1,4 @@
-﻿using System;
-using RimWorld.Planet;
+﻿using RimWorld.Planet;
 using Verse;
 
 namespace ExpandedIncidents.Settings
@@ -14,7 +13,7 @@ namespace ExpandedIncidents.Settings
         public override void FinalizeInit()
         {
             base.FinalizeInit();
-            Log.Message("Expanded Incident - Settings loaded", false);
+            Log.Message("Expanded Incident - Settings loaded");
             EI_ModSettings.ChangeDefPost();
         }
     }

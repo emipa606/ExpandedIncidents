@@ -1,10 +1,5 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using RimWorld;
+﻿using UnityEngine;
 using Verse;
-using UnityEngine;
 
 namespace ExpandedIncidents
 {
@@ -12,7 +7,6 @@ namespace ExpandedIncidents
     {
         public override void DrawWorker(Vector3 loc, Rot4 rot, ThingDef thingDef, Thing thing, float extraRotation)
         {
-            return;
         }
 
         public override Material MatAt(Rot4 rot, Thing thing = null)

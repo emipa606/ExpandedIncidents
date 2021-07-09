@@ -1,34 +1,33 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
+﻿using System.Linq;
 using RimWorld;
 using Verse;
-using Verse.AI;
 
 namespace ExpandedIncidents
 {
-    class IncidentWorker_CliquesForm : IncidentWorker
+    internal class IncidentWorker_CliquesForm : IncidentWorker
     {
         protected override bool TryExecuteWorker(IncidentParms parms)
         {
-            Map map = (Map)parms.target;
-            Pawn pawn = map.mapPawns.FreeColonistsSpawned.RandomElement();
+            var map = (Map) parms.target;
+            var pawn = map.mapPawns.FreeColonistsSpawned.RandomElement();
             if (pawn == null)
             {
                 return false;
             }
-            IEnumerable<Pawn> enemies = (from p in map.mapPawns.FreeColonistsSpawned
-                                  where p != pawn && p.relations.OpinionOf(pawn) < -20 && pawn.relations.OpinionOf(p) < -20
-                                  select p);
-            if (enemies.Count() == 0)
+
+            var enemies = from p in map.mapPawns.FreeColonistsSpawned
+                where p != pawn && p.relations.OpinionOf(pawn) < -20 && pawn.relations.OpinionOf(p) < -20
+                select p;
+            if (!enemies.Any())
             {
                 return false;
             }
-            Pawn enemy = enemies.RandomElement<Pawn>();
+
+            var enemy = enemies.RandomElement();
             pawn.needs.mood.thoughts.memories.TryGainMemory(ThoughtDefOfIncidents.Clique, enemy);
             enemy.needs.mood.thoughts.memories.TryGainMemory(ThoughtDefOfIncidents.Clique, pawn);
-            Find.LetterStack.ReceiveLetter("LetterLabelCliques".Translate(), "CliquesFormed".Translate(pawn.LabelShort, enemy.LabelShort), LetterDefOf.NegativeEvent, pawn, null);
+            Find.LetterStack.ReceiveLetter("LetterLabelCliques".Translate(),
+                "CliquesFormed".Translate(pawn.LabelShort, enemy.LabelShort), LetterDefOf.NegativeEvent, pawn);
             return true;
         }
     }

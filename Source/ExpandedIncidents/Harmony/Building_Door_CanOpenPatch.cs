@@ -1,13 +1,6 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
+﻿using HarmonyLib;
 using RimWorld;
 using Verse;
-using Verse.AI;
-using Verse.AI.Group;
-using HarmonyLib;
-using System.Reflection;
 
 namespace ExpandedIncidents.Harmony
 {
@@ -17,7 +10,7 @@ namespace ExpandedIncidents.Harmony
         [HarmonyPostfix]
         public static void AllowThievesToOpen(ref bool __result, Pawn p)
         {
-            __result = __result || (p != null && p.health != null && p.health.hediffSet.HasHediff(HediffDefOfIncidents.Thief));
+            __result = __result || p?.health != null && p.health.hediffSet.HasHediff(HediffDefOfIncidents.Thief);
         }
     }
 }
