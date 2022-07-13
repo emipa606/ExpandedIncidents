@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="utf-8"?>
+﻿<?xml version="1.0" encoding="utf-8"?>
 <ModMetaData>
   <name>Expanded Incidents (Continued)</name>
   <packageId>Mlie.ExpandedIncidents</packageId>
@@ -21,36 +21,40 @@
   <loadAfter>
     <li>brrainz.harmony</li>
   </loadAfter>
-  <description>[img]https://i.imgur.com/WAEzk68.png[/img]
+  <description>[img]https://i.imgur.com/buuPQel.png[/img]
 Update of Linqs mod
 https://steamcommunity.com/sharedfiles/filedetails/?id=1552461911
 
 - Added settings for the triggerchance of the incidents
 
-[img]https://i.imgur.com/7Gzt3Rg.png[/img]
+[img]https://i.imgur.com/pufA0kM.png[/img]
 
 [table]
 	[tr]
 		[td][url=https://invite.gg/Mlie][img]https://i.imgur.com/zdzzBrc.png[/img][/url][/td]
 		[td][url=https://github.com/emipa606/ExpandedIncidents][img]https://i.imgur.com/kTkpTOE.png[/img][/url][/td]
-	[/tr]
+    [/tr]
+    [tr]
+        [td][img]https://i.imgur.com/WjDSfUn.png[/img][/td]
+        [td][img]https://i.imgur.com/Be8E2qJ.png[/img][/td]
+    [/tr]
 [/table]
 	
-[img]https://i.imgur.com/NOW7jU1.png[/img]
+[img]https://i.imgur.com/Z4GOv8H.png[/img]
 
 This mod increases the variety of incidents your colony faces. The new incidents are designed to be balanced, generally long-term events that you can mitigate or eliminate with proper planning or response, so long as they have any significant impact on your colony.
 	
-Expanded Incidents does not require a new save game. It&apos;s compatible with everything. It will use Psychology&apos;s systems if you have both installed.
+Expanded Incidents does not require a new save game. It's compatible with everything. It will use Psychology's systems if you have both installed.
 
 [h1]New Incidents[/h1]
 - Quarrel: Two pawns friendly towards each other have their relationship damaged by an argument until they make up.
-- Homesick: One of your pawns is feeling homesick. They may spread it to other pawns through conversation, until they&apos;ve made your whole colony unhappy!
+- Homesick: One of your pawns is feeling homesick. They may spread it to other pawns through conversation, until they've made your whole colony unhappy!
 - Cliques: Two pawns who dislike each other separate the colony into cliques of their friends. Members of each clique may come to blows.
 - Sabotage: Keep a close eye on your colonists if you notice things malfunctioning in your base. Someone has to be to blame. But who?
-- Thief: Colonists and pets may spot thieves attempting to sneak into your base and steal valuables, who won&apos;t leave without a fight!
+- Thief: Colonists and pets may spot thieves attempting to sneak into your base and steal valuables, who won't leave without a fight!
 
 
-[img]https://i.imgur.com/Rs6T6cr.png[/img]
+[img]https://i.imgur.com/PwoNOj4.png[/img]
 [list]
 [*] See if the the error persists if you just have this mod and its requirements active.
 [*] If not, try adding your other mods until it happens again.
@@ -61,4 +65,3 @@ Expanded Incidents does not require a new save game. It&apos;s compatible with e
 [/list]
 </description>
 </ModMetaData>
-
