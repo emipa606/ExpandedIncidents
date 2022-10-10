@@ -1,11 +1,10 @@
 ﻿using RimWorld;
 using Verse;
 
-namespace ExpandedIncidents
+namespace ExpandedIncidents;
+
+[DefOf]
+public static class JobDefOfIncidents
 {
-    [DefOf]
-    public static class JobDefOfIncidents
-    {
-        public static JobDef Sabotage;
-    }
+    public static JobDef Sabotage;
 }

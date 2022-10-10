@@ -1,4 +1,5 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <LanguageData>
   <EI_SettingHeader>&lt;b&gt;Change events base chance (set to 0 to disable):&lt;/b&gt;</EI_SettingHeader>
+  <EI_VersionInfo>Installed mod-version: {0}</EI_VersionInfo>
 </LanguageData>

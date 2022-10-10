@@ -2,18 +2,17 @@
 using RimWorld;
 using Verse;
 
-namespace ExpandedIncidents.Harmony
+namespace ExpandedIncidents.Harmony;
+
+[HarmonyPatch(typeof(ThingSelectionUtility), "SelectableByMapClick")]
+public static class ThingSelectionUtilityPatch
 {
-    [HarmonyPatch(typeof(ThingSelectionUtility), "SelectableByMapClick")]
-    public static class ThingSelectionUtilityPatch
+    [HarmonyPostfix]
+    public static void ThiefException(ref bool __result, Thing t)
     {
-        [HarmonyPostfix]
-        public static void ThiefException(ref bool __result, Thing t)
+        if (t is Pawn pawn && pawn.health.hediffSet.HasHediff(HediffDefOfIncidents.Thief))
         {
-            if (t is Pawn pawn && pawn.health.hediffSet.HasHediff(HediffDefOfIncidents.Thief))
-            {
-                __result = false;
-            }
+            __result = false;
         }
     }
 }

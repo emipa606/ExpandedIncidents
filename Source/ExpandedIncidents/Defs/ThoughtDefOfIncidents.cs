@@ -1,13 +1,12 @@
 ﻿using RimWorld;
 
-namespace ExpandedIncidents
+namespace ExpandedIncidents;
+
+[DefOf]
+public static class ThoughtDefOfIncidents
 {
-    [DefOf]
-    public static class ThoughtDefOfIncidents
-    {
-        public static ThoughtDef Quarrel;
-        public static ThoughtDef Homesickness;
-        public static ThoughtDef Clique;
-        public static ThoughtDef CliqueFollower;
-    }
+    public static ThoughtDef Quarrel;
+    public static ThoughtDef Homesickness;
+    public static ThoughtDef Clique;
+    public static ThoughtDef CliqueFollower;
 }
