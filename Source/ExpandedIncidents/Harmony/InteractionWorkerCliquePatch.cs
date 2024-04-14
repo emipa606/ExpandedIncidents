@@ -7,13 +7,13 @@ using Verse;
 
 namespace ExpandedIncidents.Harmony;
 
-[HarmonyPatch(typeof(InteractionWorker), "Interacted")]
+[HarmonyPatch(typeof(InteractionWorker), nameof(InteractionWorker.Interacted))]
 public static class InteractionWorkerCliquePatch
 {
     private static int lastFightTick = -9999;
 
     [HarmonyPrefix]
-    public static bool ManageCliques(InteractionWorker __instance, Pawn initiator, Pawn recipient)
+    public static bool ManageCliques(Pawn initiator, Pawn recipient)
     {
         if (!initiator.RaceProps.Humanlike || !recipient.RaceProps.Humanlike)
         {
@@ -35,12 +35,9 @@ public static class InteractionWorkerCliquePatch
             return true;
         }
 
-        if (!checkInitiator)
-        {
-            return StartSocialFight(recipient, initiator, cliqueLeadersPresent);
-        }
-
-        return StartSocialFight(initiator, recipient, cliqueLeadersPresent);
+        return !checkInitiator
+            ? StartSocialFight(recipient, initiator, cliqueLeadersPresent)
+            : StartSocialFight(initiator, recipient, cliqueLeadersPresent);
     }
 
     private static bool StartSocialFight(Pawn initiator, Pawn recipient, IEnumerable<Pawn> CliqueLeadersPresent)

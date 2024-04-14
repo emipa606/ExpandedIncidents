@@ -4,7 +4,7 @@ using Verse;
 
 namespace ExpandedIncidents.Harmony;
 
-[HarmonyPatch(typeof(Building_Door), "PawnCanOpen")]
+[HarmonyPatch(typeof(Building_Door), nameof(Building_Door.PawnCanOpen))]
 public static class Building_Door_CanOpenPatch
 {
     [HarmonyPostfix]

@@ -4,7 +4,7 @@ using Verse;
 
 namespace ExpandedIncidents.Harmony;
 
-[HarmonyPatch(typeof(ThingSelectionUtility), "SelectableByMapClick")]
+[HarmonyPatch(typeof(ThingSelectionUtility), nameof(ThingSelectionUtility.SelectableByMapClick))]
 public static class ThingSelectionUtilityPatch
 {
     [HarmonyPostfix]

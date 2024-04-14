@@ -12,7 +12,7 @@ public static class IncidentWorker_RaidEnemyPatch
     [HarmonyPostfix]
     public static void PopSaboteurs(bool __result, IncidentParms parms)
     {
-        if (!__result || parms.target is not Map map || !map.IsPlayerHome)
+        if (!__result || parms.target is not Map { IsPlayerHome: true } map)
         {
             return;
         }

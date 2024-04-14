@@ -2,7 +2,6 @@ using System;
 using System.Collections.Generic;
 using System.Reflection;
 using RimWorld;
-using UnityEngine;
 using Verse;
 using Verse.AI;
 
@@ -13,12 +12,14 @@ public class Hediff_Thief : HediffWithComps
     private FieldInfo _graphicInt;
     private FieldInfo _lastCell;
     private FieldInfo _shadowGraphic;
+
     private Thing lastCarried;
-    private Graphic lastCarriedGraphic;
+
+    //private Graphic lastCarriedGraphic;
     private int lastSpottedTick = -9999;
 
-    private PawnGraphicSet oldGraphics;
-    private Graphic_Shadow oldShadow;
+    //private PawnGraphicSet oldGraphics;
+    //private Graphic_Shadow oldShadow;
 
     private void SetShadowGraphic(PawnRenderer _this, Graphic_Shadow newValue)
     {
@@ -82,7 +83,7 @@ public class Hediff_Thief : HediffWithComps
 
         if (_lastCell is not null)
         {
-            return (IntVec3)_lastCell?.GetValue(_this);
+            return (IntVec3)_lastCell?.GetValue(_this)!;
         }
 
         return default;
@@ -98,19 +99,20 @@ public class Hediff_Thief : HediffWithComps
     public override void PostAdd(DamageInfo? dinfo)
     {
         base.PostAdd(dinfo);
-        oldGraphics = pawn.Drawer.renderer.graphics;
-        oldShadow = GetShadowGraphic(pawn.Drawer.renderer);
-        pawn.Drawer.renderer.graphics = new PawnGraphicSet_Invisible(pawn);
-        var shadowData = new ShadowData { volume = new Vector3(0, 0, 0), offset = new Vector3(0, 0, 0) };
-        SetShadowGraphic(pawn.Drawer.renderer, new Graphic_Shadow(shadowData));
-        pawn.stances.CancelBusyStanceHard();
-        if (lastCarried == null || lastCarried != pawn.carryTracker.CarriedThing)
-        {
-            return;
-        }
+        //oldGraphics = pawn.Drawer.renderer.graphics;
+        //oldShadow = GetShadowGraphic(pawn.Drawer.renderer);
+        //pawn.Drawer.renderer.graphics = new PawnGraphicSet_Invisible(pawn);
+        //var shadowData = new ShadowData { volume = new Vector3(0, 0, 0), offset = new Vector3(0, 0, 0) };
+        //SetShadowGraphic(pawn.Drawer.renderer, new Graphic_Shadow(shadowData));
 
-        lastCarriedGraphic = pawn.carryTracker.CarriedThing.Graphic;
-        SetGraphicInt(pawn.carryTracker.CarriedThing, new Graphic_Invisible());
+        pawn.stances.CancelBusyStanceHard();
+        //if (lastCarried == null || lastCarried != pawn.carryTracker.CarriedThing)
+        //{
+        //    return;
+        //}
+
+        //lastCarriedGraphic = pawn.carryTracker.CarriedThing.Graphic;
+        //SetGraphicInt(pawn.carryTracker.CarriedThing, new Graphic_Invisible());
     }
 
     public override void Tick()
@@ -120,7 +122,7 @@ public class Hediff_Thief : HediffWithComps
             pawn.health.RemoveHediff(this);
         }
 
-        if (pawn.Downed || pawn.Dead || pawn.pather != null && pawn.pather.WillCollideWithPawnOnNextPathCell())
+        if (pawn.Downed || pawn.Dead || pawn.pather is { WillCollideNextCell: true })
         {
             pawn.health.RemoveHediff(this);
             AlertThief(pawn, pawn.pather?.nextCell.GetFirstPawn(pawn.Map));
@@ -154,7 +156,7 @@ public class Hediff_Thief : HediffWithComps
                             (observer.Faction.IsPlayer || observer.Faction.HostileTo(pawn.Faction)))
                         {
                             var observerSight = observer.health.capacities.GetLevel(PawnCapacityDefOf.Sight);
-                            observerSight *= 0.805f + (pawn.Map.glowGrid.GameGlowAt(pawn.Position) / 4);
+                            observerSight *= 0.805f + (pawn.Map.glowGrid.GroundGlowAt(pawn.Position) / 4);
                             if (observer.RaceProps.Animal)
                             {
                                 observerSight *= 0.9f;
@@ -173,8 +175,7 @@ public class Hediff_Thief : HediffWithComps
                         }
                         else if (observer == null)
                         {
-                            if (thing is not Building_Turret turret || turret.Faction == null ||
-                                !turret.Faction.IsPlayer)
+                            if (thing is not Building_Turret { Faction.IsPlayer: true } turret)
                             {
                                 continue;
                             }
@@ -196,46 +197,48 @@ public class Hediff_Thief : HediffWithComps
             num++;
         }
 
-        var holding = pawn.carryTracker.CarriedThing;
-        if (lastCarried == holding)
-        {
-            return;
-        }
+        //var holding = pawn.carryTracker.CarriedThing;
+        //if (lastCarried == holding)
+        //{
+        //    return;
+        //}
 
-        if (lastCarried != null)
-        {
-            SetGraphicInt(lastCarried, lastCarriedGraphic);
-        }
+        //if (lastCarried != null)
+        //{
+        //    SetGraphicInt(lastCarried, lastCarriedGraphic);
+        //}
 
-        if (holding == null)
-        {
-            return;
-        }
+        //if (holding == null)
+        //{
+        //    return;
+        //}
 
-        lastCarried = holding;
-        lastCarriedGraphic = holding.Graphic;
-        SetGraphicInt(lastCarried, new Graphic_Invisible());
+        //lastCarried = holding;
+        //lastCarriedGraphic = holding.Graphic;
+        ////SetGraphicInt(lastCarried, new Graphic_Invisible());
     }
 
     public override void PostRemoved()
     {
-        pawn.Drawer.renderer.graphics = oldGraphics;
-        pawn.Drawer.renderer.graphics.ResolveAllGraphics();
-        SetShadowGraphic(pawn.Drawer.renderer, oldShadow);
+        //pawn.Drawer.renderer.graphics = oldGraphics;
+        //pawn.Drawer.renderer.graphics.ResolveAllGraphics();
+        //SetShadowGraphic(pawn.Drawer.renderer, oldShadow);
+        //
+
         var holding = pawn.carryTracker.CarriedThing;
-        if (holding != null)
-        {
-            SetGraphicInt(holding, lastCarriedGraphic);
-        }
-        else if (lastCarried != null)
-        {
-            SetGraphicInt(lastCarried, lastCarriedGraphic);
-        }
+        //if (holding != null)
+        //{
+        //    SetGraphicInt(holding, lastCarriedGraphic);
+        //}
+        //else if (lastCarried != null)
+        //{
+        //    SetGraphicInt(lastCarried, lastCarriedGraphic);
+        //}
 
         if (!pawn.Spawned && (holding != null || lastCarried != null))
         {
             Messages.Message(
-                "A thief has stolen " + (holding != null ? holding.LabelNoCount : lastCarried.LabelNoCount) + "!",
+                $"A thief has stolen {(holding != null ? holding.LabelNoCount : lastCarried.LabelNoCount)}!",
                 MessageTypeDefOf.ThreatSmall);
         }
     }

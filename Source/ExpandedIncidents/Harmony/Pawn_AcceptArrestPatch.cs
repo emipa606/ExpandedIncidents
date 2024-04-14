@@ -5,11 +5,11 @@ using Verse;
 
 namespace ExpandedIncidents.Harmony;
 
-[HarmonyPatch(typeof(Pawn), "CheckAcceptArrest")]
+[HarmonyPatch(typeof(Pawn), nameof(Pawn.CheckAcceptArrest))]
 public static class Pawn_AcceptArrestPatch
 {
     [HarmonyPrefix]
-    public static bool RevealSaboteur(Pawn __instance, Pawn arrester)
+    public static bool RevealSaboteur(ref Pawn __instance)
     {
         if (!__instance.health.hediffSet.HasHediff(HediffDefOfIncidents.Saboteur))
         {

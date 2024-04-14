@@ -3,7 +3,7 @@ using Verse;
 
 namespace ExpandedIncidents.Harmony;
 
-[HarmonyPatch(typeof(Pawn), "ThreatDisabled")]
+[HarmonyPatch(typeof(Pawn), nameof(Pawn.ThreatDisabled))]
 public static class Pawn_ThreatDisabledPatch
 {
     [HarmonyPostfix]

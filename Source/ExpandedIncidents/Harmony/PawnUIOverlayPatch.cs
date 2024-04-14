@@ -3,13 +3,12 @@ using Verse;
 
 namespace ExpandedIncidents.Harmony;
 
-[HarmonyPatch(typeof(PawnUIOverlay), "DrawPawnGUIOverlay")]
+[HarmonyPatch(typeof(PawnUIOverlay), nameof(PawnUIOverlay.DrawPawnGUIOverlay))]
 public static class PawnUIOverlayPatch
 {
     [HarmonyPrefix]
-    public static bool ThiefException(PawnUIOverlay __instance)
+    public static bool ThiefException(Pawn ___pawn)
     {
-        var pawn = Traverse.Create(__instance).Field("pawn").GetValue<Pawn>();
-        return pawn == null || !pawn.health.hediffSet.HasHediff(HediffDefOfIncidents.Thief);
+        return ___pawn == null || !___pawn.health.hediffSet.HasHediff(HediffDefOfIncidents.Thief);
     }
 }
