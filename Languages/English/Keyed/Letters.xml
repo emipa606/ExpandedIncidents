@@ -1,4 +1,4 @@
-﻿<?xml version="1.0" encoding="utf-8"?>
+<?xml version="1.0" encoding="utf-8"?>
 <LanguageData>
   <LetterLabelCliques>Cliques forming</LetterLabelCliques>
   <CliquesFormed>{0} and {1} are separating the colony into cliques over their rivalry. They and their friends may start fights with each other!</CliquesFormed>

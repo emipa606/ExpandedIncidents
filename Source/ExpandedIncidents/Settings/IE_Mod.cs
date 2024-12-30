@@ -26,8 +26,6 @@ internal class IE_Mod : Mod
     public void ResetSettings()
     {
         EI_ModSettings.QuarrelBaseChance = 0.3f;
-        //EI_ModSettings.HomesickBaseChance = 0.1f;
-        //EI_ModSettings.HomesickCuredBaseChance = 0.05f;
         EI_ModSettings.CliqueBaseChance = 0.3f;
         EI_ModSettings.SabotageBaseChance = 0.5f;
         EI_ModSettings.ThiefBaseChance = 2.0f;
@@ -74,32 +72,6 @@ internal class IE_Mod : Mod
         var rect18 = rect15.RightHalf().Rounded();
         rect17.Overlaps(rect18);
         var rect19 = rect18.RightHalf().Rounded();
-        //Widgets.Label(rect17, "LetterLabelHomesick".Translate());
-        //Widgets.Label(rect19, EI_ModSettings.HomesickBaseChance.ToString());
-        //EI_ModSettings.HomesickBaseChance = Widgets.HorizontalSlider(
-        //    new Rect(rect16.xMin + rect16.height + 10f, rect16.y, rect16.width - ((rect16.height * 2f) + 20f),
-        //        rect16.height), EI_ModSettings.HomesickBaseChance, 0f, 10f, true);
-        //listing_Standard.Gap(10f);
-        //var rect20 = listing_Standard.GetRect(Text.LineHeight);
-        //var rect21 = rect20.LeftHalf().Rounded();
-        //var rect22 = rect20.RightHalf().Rounded();
-        //var rect23 = rect21.LeftHalf().Rounded();
-        //var rect24 = rect21.RightHalf().Rounded();
-        //rect23.Overlaps(rect24);
-        //var rect25 = rect24.RightHalf().Rounded();
-        //Widgets.Label(rect23, "LetterLabelHomesickCured".Translate());
-        //Widgets.Label(rect25, EI_ModSettings.HomesickCuredBaseChance.ToString());
-        //EI_ModSettings.HomesickCuredBaseChance = Widgets.HorizontalSlider(
-        //    new Rect(rect22.xMin + rect22.height + 10f, rect22.y, rect22.width - ((rect22.height * 2f) + 20f),
-        //        rect22.height), EI_ModSettings.HomesickCuredBaseChance, 0f, 10f, true);
-        //listing_Standard.Gap(10f);
-        //var rect26 = listing_Standard.GetRect(Text.LineHeight);
-        //var rect27 = rect26.LeftHalf().Rounded();
-        //var rect28 = rect26.RightHalf().Rounded();
-        //var rect29 = rect27.LeftHalf().Rounded();
-        //var rect30 = rect27.RightHalf().Rounded();
-        //rect29.Overlaps(rect30);
-        //var rect31 = rect30.RightHalf().Rounded();
         Widgets.Label(rect17, "LetterLabelCliques".Translate());
         Widgets.Label(rect19, EI_ModSettings.CliqueBaseChance.ToString());
         EI_ModSettings.CliqueBaseChance = Widgets.HorizontalSlider(

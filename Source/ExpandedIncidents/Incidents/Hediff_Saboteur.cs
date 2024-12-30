@@ -10,6 +10,12 @@ public class Hediff_Saboteur : HediffWithComps
 {
     public static Building_Turret FindTurretFor(Pawn p)
     {
+        var thingDef = ThingDefOf.Turret_MiniTurret;
+
+        var building_Turret2 = (Building_Turret)GenClosest.ClosestThingReachable(p.Position, p.Map,
+            ThingRequest.ForDef(thingDef), PathEndMode.OnCell, TraverseParms.For(p), 9999f, Validator);
+        return building_Turret2;
+
         bool TurretValidator(Thing t)
         {
             var building_Turret3 = (Building_TurretGun)t;
@@ -21,20 +27,22 @@ public class Hediff_Saboteur : HediffWithComps
             return building_Turret3.GetComp<CompFlickable>().SwitchIsOn && !building_Turret3.IsBurning();
         }
 
-        var thingDef = ThingDefOf.Turret_MiniTurret;
-
         bool Validator(Thing b)
         {
             return TurretValidator(b);
         }
-
-        var building_Turret2 = (Building_Turret)GenClosest.ClosestThingReachable(p.Position, p.Map,
-            ThingRequest.ForDef(thingDef), PathEndMode.OnCell, TraverseParms.For(p), 9999f, Validator);
-        return building_Turret2;
     }
 
     public static Building FindBreakDownTargetFor(Pawn p)
     {
+        var thingDef = (from t in DefDatabase<ThingDef>.AllDefsListForReading
+            where t.GetCompProperties<CompProperties_Breakdownable>() != null
+            select t).ToList().RandomElement();
+
+        var building = (Building)GenClosest.ClosestThingReachable(p.Position, p.Map, ThingRequest.ForDef(thingDef),
+            PathEndMode.OnCell, TraverseParms.For(p), 9999f, Validator);
+        return building;
+
         bool BreakdownValidator(Thing t)
         {
             var building3 = (Building)t;
@@ -46,18 +54,10 @@ public class Hediff_Saboteur : HediffWithComps
             return !building3.GetComp<CompBreakdownable>().BrokenDown && !building3.IsBurning();
         }
 
-        var thingDef = (from t in DefDatabase<ThingDef>.AllDefsListForReading
-            where t.GetCompProperties<CompProperties_Breakdownable>() != null
-            select t).ToList().RandomElement();
-
         bool Validator(Thing b)
         {
             return BreakdownValidator(b);
         }
-
-        var building = (Building)GenClosest.ClosestThingReachable(p.Position, p.Map, ThingRequest.ForDef(thingDef),
-            PathEndMode.OnCell, TraverseParms.For(p), 9999f, Validator);
-        return building;
     }
 
     public override void Tick()

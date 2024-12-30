@@ -1,5 +1,8 @@
 # Changelog for ExpandedIncidents
 
+1.5.1 - Actually applies the harmony-patches...
+
+
 1.5.0 - Updated for 1.5, skipped hopesick since Psychology isnt updated. Uses the new invisibility hediff instead of the old manual code.
 Used DeepL to update translations for ChineseSimplified, French, German, Japanese, Russian
 
