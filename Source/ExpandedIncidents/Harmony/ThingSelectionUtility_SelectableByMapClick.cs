@@ -5,10 +5,9 @@ using Verse;
 namespace ExpandedIncidents.Harmony;
 
 [HarmonyPatch(typeof(ThingSelectionUtility), nameof(ThingSelectionUtility.SelectableByMapClick))]
-public static class ThingSelectionUtilityPatch
+public static class ThingSelectionUtility_SelectableByMapClick
 {
-    [HarmonyPostfix]
-    public static void ThiefException(ref bool __result, Thing t)
+    public static void Postfix(ref bool __result, Thing t)
     {
         if (t is Pawn pawn && pawn.health.hediffSet.HasHediff(HediffDefOfIncidents.Thief))
         {

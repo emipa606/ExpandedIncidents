@@ -7,10 +7,9 @@ using Verse.AI;
 namespace ExpandedIncidents;
 
 [HarmonyPatch(typeof(IncidentWorker_RaidEnemy), "TryExecuteWorker", typeof(IncidentParms))]
-public static class IncidentWorker_RaidEnemyPatch
+public static class IncidentWorker_RaidEnemy_TryExecuteWorker
 {
-    [HarmonyPostfix]
-    public static void PopSaboteurs(bool __result, IncidentParms parms)
+    public static void Postfix(bool __result, IncidentParms parms)
     {
         if (!__result || parms.target is not Map { IsPlayerHome: true } map)
         {

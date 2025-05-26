@@ -5,7 +5,7 @@ using Verse;
 namespace ExpandedIncidents.Harmony;
 
 [HarmonyPatch(typeof(Pawn_Ownership), nameof(Pawn_Ownership.Notify_ChangedGuestStatus))]
-public static class Notify_ChangedGuestStatusPatch
+public static class Notify_ChangedGuestStatus
 {
     [HarmonyPostfix]
     public static void MakePotentialSaboteur(ref Pawn ___pawn)

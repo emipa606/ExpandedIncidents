@@ -243,7 +243,7 @@ public class Hediff_Thief : HediffWithComps
         }
     }
 
-    public void AlertThief(Pawn localPawn, Thing observer)
+    private void AlertThief(Pawn localPawn, Thing observer)
     {
         localPawn.jobs.EndCurrentJob(JobCondition.InterruptForced);
         if (!localPawn.Dead)

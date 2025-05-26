@@ -8,7 +8,7 @@ namespace ExpandedIncidents;
 
 public class Hediff_Saboteur : HediffWithComps
 {
-    public static Building_Turret FindTurretFor(Pawn p)
+    private static Building_Turret FindTurretFor(Pawn p)
     {
         var thingDef = ThingDefOf.Turret_MiniTurret;
 
@@ -33,7 +33,7 @@ public class Hediff_Saboteur : HediffWithComps
         }
     }
 
-    public static Building FindBreakDownTargetFor(Pawn p)
+    private static Building FindBreakDownTargetFor(Pawn p)
     {
         var thingDef = (from t in DefDatabase<ThingDef>.AllDefsListForReading
             where t.GetCompProperties<CompProperties_Breakdownable>() != null

@@ -1,5 +1,8 @@
 # Changelog for ExpandedIncidents
 
+1.5.2 - Fixed a nullcheck, cleaned up the harmony patch-format
+
+
 1.5.1 - Actually applies the harmony-patches...
 
 

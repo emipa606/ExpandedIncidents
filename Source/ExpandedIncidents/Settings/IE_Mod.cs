@@ -30,12 +30,12 @@ internal class IE_Mod : Mod
         EI_ModSettings.SabotageBaseChance = 0.5f;
         EI_ModSettings.ThiefBaseChance = 2.0f;
         settings.Write();
-        settings.ChangeDef();
+        EI_ModSettings.ChangeDef();
     }
 
     public override void DoSettingsWindowContents(Rect rect)
     {
-        settings.ChangeDef();
+        EI_ModSettings.ChangeDef();
         var rect2 = new Rect(rect.x, rect.y, rect.width - 30f, rect.height - 10f);
         var listing_Standard = new Listing_Standard();
         Widgets.BeginScrollView(rect, ref scrollPosition, rect2);
@@ -57,7 +57,7 @@ internal class IE_Mod : Mod
         var rect10 = rect8.RightHalf().Rounded();
         var rect11 = rect9.LeftHalf().Rounded();
         var rect12 = rect9.RightHalf().Rounded();
-        rect11.Overlaps(rect12);
+        _ = rect11.Overlaps(rect12);
         var rect13 = rect12.RightHalf().Rounded();
         Widgets.Label(rect11, "LetterLabelQuarrel".Translate());
         Widgets.Label(rect13, EI_ModSettings.QuarrelBaseChance.ToString());
@@ -70,7 +70,7 @@ internal class IE_Mod : Mod
         var rect16 = rect14.RightHalf().Rounded();
         var rect17 = rect15.LeftHalf().Rounded();
         var rect18 = rect15.RightHalf().Rounded();
-        rect17.Overlaps(rect18);
+        _ = rect17.Overlaps(rect18);
         var rect19 = rect18.RightHalf().Rounded();
         Widgets.Label(rect17, "LetterLabelCliques".Translate());
         Widgets.Label(rect19, EI_ModSettings.CliqueBaseChance.ToString());
@@ -83,7 +83,7 @@ internal class IE_Mod : Mod
         var rect34 = rect32.RightHalf().Rounded();
         var rect35 = rect33.LeftHalf().Rounded();
         var rect36 = rect33.RightHalf().Rounded();
-        rect35.Overlaps(rect36);
+        _ = rect35.Overlaps(rect36);
         var rect37 = rect36.RightHalf().Rounded();
         Widgets.Label(rect35, "LetterLabelSabotage".Translate());
         Widgets.Label(rect37, EI_ModSettings.SabotageBaseChance.ToString());
@@ -96,7 +96,7 @@ internal class IE_Mod : Mod
         var rect40 = rect38.RightHalf().Rounded();
         var rect41 = rect39.LeftHalf().Rounded();
         var rect42 = rect39.RightHalf().Rounded();
-        rect41.Overlaps(rect42);
+        _ = rect41.Overlaps(rect42);
         var rect43 = rect42.RightHalf().Rounded();
         Widgets.Label(rect41, "LetterLabelThief".Translate());
         Widgets.Label(rect43, EI_ModSettings.ThiefBaseChance.ToString());
@@ -114,6 +114,6 @@ internal class IE_Mod : Mod
         listing_Standard.End();
         Widgets.EndScrollView();
         settings.Write();
-        settings.ChangeDef();
+        EI_ModSettings.ChangeDef();
     }
 }

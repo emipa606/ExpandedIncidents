@@ -6,10 +6,9 @@ using Verse;
 namespace ExpandedIncidents.Harmony;
 
 [HarmonyPatch(typeof(Pawn), nameof(Pawn.CheckAcceptArrest))]
-public static class Pawn_AcceptArrestPatch
+public static class Pawn_CheckAcceptArrest
 {
-    [HarmonyPrefix]
-    public static bool RevealSaboteur(ref Pawn __instance)
+    public static bool Prefix(ref Pawn __instance)
     {
         if (!__instance.health.hediffSet.HasHediff(HediffDefOfIncidents.Saboteur))
         {

@@ -4,10 +4,9 @@ using Verse;
 namespace ExpandedIncidents.Harmony;
 
 [HarmonyPatch(typeof(PawnUIOverlay), nameof(PawnUIOverlay.DrawPawnGUIOverlay))]
-public static class PawnUIOverlayPatch
+public static class PawnUIOverlay_DrawPawnGUIOverlay
 {
-    [HarmonyPrefix]
-    public static bool ThiefException(Pawn ___pawn)
+    public static bool Prefix(Pawn ___pawn)
     {
         return ___pawn == null || !___pawn.health.hediffSet.HasHediff(HediffDefOfIncidents.Thief);
     }

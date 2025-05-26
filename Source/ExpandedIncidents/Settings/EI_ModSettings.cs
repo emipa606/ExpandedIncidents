@@ -7,13 +7,13 @@ namespace ExpandedIncidents.Settings;
 internal class EI_ModSettings : ModSettings
 {
     internal static float QuarrelBaseChance = 0.3f;
-    internal static float HomesickBaseChance = 0.1f;
-    internal static float HomesickCuredBaseChance = 0.05f;
+    private static float HomesickBaseChance = 0.1f;
+    private static float HomesickCuredBaseChance = 0.05f;
     internal static float CliqueBaseChance = 0.3f;
     internal static float SabotageBaseChance = 0.5f;
     internal static float ThiefBaseChance = 2.0f;
 
-    public void ChangeDef()
+    public static void ChangeDef()
     {
         var list = DefDatabase<IncidentDef>.AllDefs.ToList();
         foreach (var incidentDef in list)

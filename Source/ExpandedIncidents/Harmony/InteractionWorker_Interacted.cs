@@ -8,13 +8,17 @@ using Verse;
 namespace ExpandedIncidents.Harmony;
 
 [HarmonyPatch(typeof(InteractionWorker), nameof(InteractionWorker.Interacted))]
-public static class InteractionWorkerCliquePatch
+public static class InteractionWorker_Interacted
 {
     private static int lastFightTick = -9999;
 
-    [HarmonyPrefix]
-    public static bool ManageCliques(Pawn initiator, Pawn recipient)
+    public static bool Prefix(Pawn initiator, Pawn recipient)
     {
+        if (initiator == null || recipient == null)
+        {
+            return true; //No interaction
+        }
+
         if (!initiator.RaceProps.Humanlike || !recipient.RaceProps.Humanlike)
         {
             return true;
