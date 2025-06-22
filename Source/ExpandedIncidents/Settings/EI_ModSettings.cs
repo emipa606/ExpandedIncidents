@@ -7,8 +7,8 @@ namespace ExpandedIncidents.Settings;
 internal class EI_ModSettings : ModSettings
 {
     internal static float QuarrelBaseChance = 0.3f;
-    private static float HomesickBaseChance = 0.1f;
-    private static float HomesickCuredBaseChance = 0.05f;
+    private static float homesickBaseChance = 0.1f;
+    private static float homesickCuredBaseChance = 0.05f;
     internal static float CliqueBaseChance = 0.3f;
     internal static float SabotageBaseChance = 0.5f;
     internal static float ThiefBaseChance = 2.0f;
@@ -24,10 +24,10 @@ internal class EI_ModSettings : ModSettings
                     incidentDef.baseChance = QuarrelBaseChance;
                     break;
                 case "Homesick":
-                    incidentDef.baseChance = HomesickBaseChance;
+                    incidentDef.baseChance = homesickBaseChance;
                     break;
                 case "HomesickCured":
-                    incidentDef.baseChance = HomesickCuredBaseChance;
+                    incidentDef.baseChance = homesickCuredBaseChance;
                     break;
                 case "Clique":
                     incidentDef.baseChance = CliqueBaseChance;
@@ -53,10 +53,10 @@ internal class EI_ModSettings : ModSettings
                     incidentDef.baseChance = QuarrelBaseChance;
                     break;
                 case "Homesick":
-                    incidentDef.baseChance = HomesickBaseChance;
+                    incidentDef.baseChance = homesickBaseChance;
                     break;
                 case "HomesickCured":
-                    incidentDef.baseChance = HomesickCuredBaseChance;
+                    incidentDef.baseChance = homesickCuredBaseChance;
                     break;
                 case "Clique":
                     incidentDef.baseChance = CliqueBaseChance;
@@ -75,8 +75,8 @@ internal class EI_ModSettings : ModSettings
     {
         base.ExposeData();
         Scribe_Values.Look(ref QuarrelBaseChance, "QuarrelBaseChance", 0.3f);
-        Scribe_Values.Look(ref HomesickBaseChance, "HomesickBaseChance", 0.1f);
-        Scribe_Values.Look(ref HomesickCuredBaseChance, "HomesickCuredBaseChance", 0.05f);
+        Scribe_Values.Look(ref homesickBaseChance, "HomesickBaseChance", 0.1f);
+        Scribe_Values.Look(ref homesickCuredBaseChance, "HomesickCuredBaseChance", 0.05f);
         Scribe_Values.Look(ref CliqueBaseChance, "CliqueBaseChance", 0.3f);
         Scribe_Values.Look(ref SabotageBaseChance, "SabotageBaseChance", 0.5f);
         Scribe_Values.Look(ref ThiefBaseChance, "ThiefBaseChance", 2.0f);

@@ -6,7 +6,7 @@ namespace ExpandedIncidents.Settings;
 
 internal class IE_Mod : Mod
 {
-    public static EI_ModSettings settings;
+    private static EI_ModSettings settings;
     private static string currentVersion;
 
     private Vector2 scrollPosition = Vector2.zero;
@@ -23,7 +23,7 @@ internal class IE_Mod : Mod
         return "Expanded Incidents";
     }
 
-    public void ResetSettings()
+    private static void resetSettings()
     {
         EI_ModSettings.QuarrelBaseChance = 0.3f;
         EI_ModSettings.CliqueBaseChance = 0.3f;
@@ -37,22 +37,22 @@ internal class IE_Mod : Mod
     {
         EI_ModSettings.ChangeDef();
         var rect2 = new Rect(rect.x, rect.y, rect.width - 30f, rect.height - 10f);
-        var listing_Standard = new Listing_Standard();
+        var listingStandard = new Listing_Standard();
         Widgets.BeginScrollView(rect, ref scrollPosition, rect2);
-        listing_Standard.Begin(rect2);
-        listing_Standard.Gap(10f);
-        var rect3 = listing_Standard.GetRect(Text.LineHeight);
+        listingStandard.Begin(rect2);
+        listingStandard.Gap(10f);
+        var rect3 = listingStandard.GetRect(Text.LineHeight);
         if (Widgets.ButtonText(rect3, "Reset Settings"))
         {
-            ResetSettings();
+            resetSettings();
         }
 
-        listing_Standard.Gap(10f);
+        listingStandard.Gap(10f);
 
-        var rect7 = listing_Standard.GetRect(Text.LineHeight);
+        var rect7 = listingStandard.GetRect(Text.LineHeight);
         Widgets.Label(rect7, "EI_SettingHeader".Translate());
-        listing_Standard.Gap(10f);
-        var rect8 = listing_Standard.GetRect(Text.LineHeight);
+        listingStandard.Gap(10f);
+        var rect8 = listingStandard.GetRect(Text.LineHeight);
         var rect9 = rect8.LeftHalf().Rounded();
         var rect10 = rect8.RightHalf().Rounded();
         var rect11 = rect9.LeftHalf().Rounded();
@@ -64,8 +64,8 @@ internal class IE_Mod : Mod
         EI_ModSettings.QuarrelBaseChance = Widgets.HorizontalSlider(
             new Rect(rect10.xMin + rect10.height + 10f, rect10.y, rect10.width - ((rect10.height * 2f) + 20f),
                 rect10.height), EI_ModSettings.QuarrelBaseChance, 0f, 10f, true);
-        listing_Standard.Gap(10f);
-        var rect14 = listing_Standard.GetRect(Text.LineHeight);
+        listingStandard.Gap(10f);
+        var rect14 = listingStandard.GetRect(Text.LineHeight);
         var rect15 = rect14.LeftHalf().Rounded();
         var rect16 = rect14.RightHalf().Rounded();
         var rect17 = rect15.LeftHalf().Rounded();
@@ -77,8 +77,8 @@ internal class IE_Mod : Mod
         EI_ModSettings.CliqueBaseChance = Widgets.HorizontalSlider(
             new Rect(rect16.xMin + rect16.height + 10f, rect16.y, rect16.width - ((rect16.height * 2f) + 20f),
                 rect16.height), EI_ModSettings.CliqueBaseChance, 0f, 10f, true);
-        listing_Standard.Gap(10f);
-        var rect32 = listing_Standard.GetRect(Text.LineHeight);
+        listingStandard.Gap(10f);
+        var rect32 = listingStandard.GetRect(Text.LineHeight);
         var rect33 = rect32.LeftHalf().Rounded();
         var rect34 = rect32.RightHalf().Rounded();
         var rect35 = rect33.LeftHalf().Rounded();
@@ -90,8 +90,8 @@ internal class IE_Mod : Mod
         EI_ModSettings.SabotageBaseChance = Widgets.HorizontalSlider(
             new Rect(rect34.xMin + rect34.height + 10f, rect34.y, rect34.width - ((rect34.height * 2f) + 20f),
                 rect34.height), EI_ModSettings.SabotageBaseChance, 0f, 10f, true);
-        listing_Standard.Gap(10f);
-        var rect38 = listing_Standard.GetRect(Text.LineHeight);
+        listingStandard.Gap(10f);
+        var rect38 = listingStandard.GetRect(Text.LineHeight);
         var rect39 = rect38.LeftHalf().Rounded();
         var rect40 = rect38.RightHalf().Rounded();
         var rect41 = rect39.LeftHalf().Rounded();
@@ -105,13 +105,13 @@ internal class IE_Mod : Mod
                 rect40.height), EI_ModSettings.ThiefBaseChance, 0f, 10f, true);
         if (currentVersion != null)
         {
-            listing_Standard.Gap(10f);
+            listingStandard.Gap(10f);
             GUI.contentColor = Color.gray;
-            listing_Standard.Label("EI_VersionInfo".Translate(currentVersion));
+            listingStandard.Label("EI_VersionInfo".Translate(currentVersion));
             GUI.contentColor = Color.white;
         }
 
-        listing_Standard.End();
+        listingStandard.End();
         Widgets.EndScrollView();
         settings.Write();
         EI_ModSettings.ChangeDef();

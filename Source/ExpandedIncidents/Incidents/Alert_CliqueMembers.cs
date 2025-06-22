@@ -16,7 +16,7 @@ public class Alert_CliqueMembers : Alert
         defaultPriority = AlertPriority.Critical;
     }
 
-    private IEnumerable<Pawn> CliqueLeaders =>
+    private static IEnumerable<Pawn> CliqueLeaders =>
         from c in PawnsFinder.AllMaps_FreeColonistsSpawned
         where c.needs.mood.thoughts.memories.NumMemoriesOfDef(ThoughtDefOfIncidents.Clique) > 0
         select c;

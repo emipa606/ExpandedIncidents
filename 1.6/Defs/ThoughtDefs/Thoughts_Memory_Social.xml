@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Defs>
+  <ThoughtDef>
+    <defName>Quarrel</defName>
+    <thoughtClass>Thought_MemorySocial</thoughtClass>
+    <durationDays>30.0</durationDays>
+    <stackLimit>300</stackLimit>
+    <stackLimitForSameOtherPawn>5</stackLimitForSameOtherPawn>
+    <stackedEffectMultiplier>0.4</stackedEffectMultiplier>
+    <stages>
+      <li>
+        <label>holding a grudge</label>
+        <baseOpinionOffset>-80</baseOpinionOffset>
+      </li>
+    </stages>
+  </ThoughtDef>
+  <ThoughtDef>
+    <defName>Clique</defName>
+    <thoughtClass>Thought_MemorySocial</thoughtClass>
+    <durationDays>30.0</durationDays>
+    <stackLimit>300</stackLimit>
+    <stackLimitForSameOtherPawn>1</stackLimitForSameOtherPawn>
+    <stages>
+      <li>
+        <label>enemy of my clique</label>
+        <baseOpinionOffset>-20</baseOpinionOffset>
+      </li>
+    </stages>
+  </ThoughtDef>
+  <ThoughtDef>
+    <defName>CliqueFollower</defName>
+    <thoughtClass>Thought_MemorySocial</thoughtClass>
+    <durationDays>2.0</durationDays>
+    <stackLimit>300</stackLimit>
+    <stackLimitForSameOtherPawn>1</stackLimitForSameOtherPawn>
+    <stages>
+      <li>
+        <label>enemy of my clique</label>
+        <baseOpinionOffset>-10</baseOpinionOffset>
+      </li>
+    </stages>
+  </ThoughtDef>
+</Defs>

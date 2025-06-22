@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<LanguageData>
+  <!-- EN: enemy of my clique -->
+  <Clique.stages.enemy_of_my_clique.label>enemy of my clique</Clique.stages.enemy_of_my_clique.label>
+  <!-- EN: enemy of my clique -->
+  <CliqueFollower.stages.enemy_of_my_clique.label>enemy of my clique</CliqueFollower.stages.enemy_of_my_clique.label>
+  <!-- EN: holding a grudge -->
+  <Quarrel.stages.holding_a_grudge.label>holding a grudge</Quarrel.stages.holding_a_grudge.label>
+</LanguageData>

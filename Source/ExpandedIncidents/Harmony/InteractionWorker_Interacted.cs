@@ -28,7 +28,8 @@ public static class InteractionWorker_Interacted
             where c.IsColonist &&
                   c.needs.mood.thoughts.memories.NumMemoriesOfDef(ThoughtDefOfIncidents.Clique) > 0
             select c;
-        var checkInitiator = AnyCliqueLinks(initiator, recipient, cliqueLeadersPresent, out var clique);
+        var leadersPresent = cliqueLeadersPresent as Pawn[] ?? cliqueLeadersPresent.ToArray();
+        var checkInitiator = anyCliqueLinks(initiator, recipient, leadersPresent, out var clique);
         if (!clique || !initiator.RaceProps.Humanlike || !recipient.RaceProps.Humanlike)
         {
             return true;
@@ -40,18 +41,19 @@ public static class InteractionWorker_Interacted
         }
 
         return !checkInitiator
-            ? StartSocialFight(recipient, initiator, cliqueLeadersPresent)
-            : StartSocialFight(initiator, recipient, cliqueLeadersPresent);
+            ? startSocialFight(recipient, initiator, leadersPresent)
+            : startSocialFight(initiator, recipient, leadersPresent);
     }
 
-    private static bool StartSocialFight(Pawn initiator, Pawn recipient, IEnumerable<Pawn> CliqueLeadersPresent)
+    private static bool startSocialFight(Pawn initiator, Pawn recipient, IEnumerable<Pawn> cliqueLeadersPresent)
     {
         if (!(Rand.Value <= Mathf.InverseLerp(50f, -100f, initiator.relations.OpinionOf(recipient))))
         {
             return true;
         }
 
-        if (!(CliqueLeadersPresent.Contains(initiator) && CliqueLeadersPresent.Contains(recipient)))
+        var leadersPresent = cliqueLeadersPresent as Pawn[] ?? cliqueLeadersPresent.ToArray();
+        if (!(leadersPresent.Contains(initiator) && leadersPresent.Contains(recipient)))
         {
             recipient.needs.mood.thoughts.memories.TryGainMemory(ThoughtDefOfIncidents.CliqueFollower,
                 initiator);
@@ -64,12 +66,13 @@ public static class InteractionWorker_Interacted
         return false;
     }
 
-    private static bool AnyCliqueLinks(Pawn initiator, Pawn recipient, IEnumerable<Pawn> CliqueLeadersPresent,
+    private static bool anyCliqueLinks(Pawn initiator, Pawn recipient, IEnumerable<Pawn> cliqueLeadersPresent,
         out bool checkInitiator)
     {
         checkInitiator = false;
         //No cliques, no cliquer
-        if (!CliqueLeadersPresent.Any() || CliqueLeadersPresent.Count() < 2)
+        var leadersPresent = cliqueLeadersPresent as Pawn[] ?? cliqueLeadersPresent.ToArray();
+        if (!leadersPresent.Any() || leadersPresent.Count() < 2)
         {
             return false;
         }
@@ -93,26 +96,26 @@ public static class InteractionWorker_Interacted
         }
 
         //Two clique leaders interact
-        if (CliqueLeadersPresent.Contains(initiator) && CliqueLeadersPresent.Contains(recipient))
+        if (leadersPresent.Contains(initiator) && leadersPresent.Contains(recipient))
         {
             return true; //Recipient clique leader starts fight with initiator clique leader
         }
 
         IEnumerable<Pawn> leadersNonLeaderLikes;
         Pawn leader;
-        if (CliqueLeadersPresent.Contains(initiator))
+        if (leadersPresent.Contains(initiator))
         {
             //Initiator is clique leader
-            leadersNonLeaderLikes = from p in CliqueLeadersPresent
+            leadersNonLeaderLikes = from p in leadersPresent
                 where recipient.relations.OpinionOf(p) > 20
                 orderby recipient.relations.OpinionOf(p) descending
                 select p;
             leader = initiator;
         }
-        else if (CliqueLeadersPresent.Contains(recipient))
+        else if (leadersPresent.Contains(recipient))
         {
             //Recipient is clique leader
-            leadersNonLeaderLikes = from p in CliqueLeadersPresent
+            leadersNonLeaderLikes = from p in leadersPresent
                 where initiator.relations.OpinionOf(p) > 20
                 orderby initiator.relations.OpinionOf(p) descending
                 select p;
@@ -121,35 +124,37 @@ public static class InteractionWorker_Interacted
         else
         {
             //Neither are clique leaders, but may still both be in different cliques
-            IEnumerable<Pawn> leadersRecipientLikes = from p in CliqueLeadersPresent
+            IEnumerable<Pawn> leadersRecipientLikes = from p in leadersPresent
                 where recipient.relations.OpinionOf(p) > 20
                 orderby recipient.relations.OpinionOf(p) descending
                 select p;
-            IEnumerable<Pawn> leadersInitiatorLikes = from p in CliqueLeadersPresent
+            IEnumerable<Pawn> leadersInitiatorLikes = from p in leadersPresent
                 where initiator.relations.OpinionOf(p) > 20
                 orderby initiator.relations.OpinionOf(p) descending
                 select p;
-            return leadersRecipientLikes.Any() && leadersInitiatorLikes.Any() &&
-                   leadersInitiatorLikes.First() != leadersRecipientLikes.First();
+            var recipientLikes = leadersRecipientLikes as Pawn[] ?? leadersRecipientLikes.ToArray();
+            return recipientLikes.Any() && leadersInitiatorLikes.Any() &&
+                   leadersInitiatorLikes.First() != recipientLikes.First();
             //Either one of them is not in any cliques, or they are both in the same clique and both prefer the same leader
             //They are both in cliques and do not prefer the same leader.
             //Recipient starts fight with initiator for preferring another clique leader
         }
 
         //One or the other is a clique leader
-        if (!leadersNonLeaderLikes.Any())
+        var nonLeaderLikes = leadersNonLeaderLikes as Pawn[] ?? leadersNonLeaderLikes.ToArray();
+        if (!nonLeaderLikes.Any())
         {
             //Non-leader is not friends with any leader, so they aren't a part of the clique.
             return false;
         }
 
-        if (!leadersNonLeaderLikes.Contains(initiator))
+        if (!nonLeaderLikes.Contains(initiator))
         {
             checkInitiator = leader == recipient;
             return true; //Non-leader starts fight with leader for being leader of an enemy clique
         }
 
-        if (leadersNonLeaderLikes.First() == leader)
+        if (nonLeaderLikes.First() == leader)
         {
             return false; //Non-leader is friends with both leaders, but prefers the leader they're speaking to
         }

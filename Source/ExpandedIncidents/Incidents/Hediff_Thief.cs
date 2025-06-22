@@ -9,81 +9,28 @@ namespace ExpandedIncidents;
 
 public class Hediff_Thief : HediffWithComps
 {
-    private FieldInfo _graphicInt;
-    private FieldInfo _lastCell;
-    private FieldInfo _shadowGraphic;
-
     private Thing lastCarried;
+    private FieldInfo lastCell;
 
-    //private Graphic lastCarriedGraphic;
     private int lastSpottedTick = -9999;
 
-    //private PawnGraphicSet oldGraphics;
-    //private Graphic_Shadow oldShadow;
-
-    private void SetShadowGraphic(PawnRenderer _this, Graphic_Shadow newValue)
+    private IntVec3 getLastCell(Pawn_PathFollower _this)
     {
-        if (_shadowGraphic == null)
+        if (lastCell != null)
         {
-            _shadowGraphic =
-                typeof(PawnRenderer).GetField("shadowGraphic", BindingFlags.Instance | BindingFlags.NonPublic);
-            if (_shadowGraphic == null)
-            {
-                Log.ErrorOnce("Unable to reflect PawnRenderer.shadowGraphic!", 0x12348765);
-            }
+            return (IntVec3)lastCell.GetValue(_this);
         }
 
-        _shadowGraphic?.SetValue(_this, newValue);
-    }
-
-    private Graphic_Shadow GetShadowGraphic(PawnRenderer _this)
-    {
-        if (_shadowGraphic != null)
-        {
-            return (Graphic_Shadow)_shadowGraphic.GetValue(_this);
-        }
-
-        _shadowGraphic =
-            typeof(PawnRenderer).GetField("shadowGraphic", BindingFlags.Instance | BindingFlags.NonPublic);
-        if (_shadowGraphic == null)
-        {
-            Log.ErrorOnce("Unable to reflect PawnRenderer.shadowGraphic!", 0x12348765);
-        }
-
-        return (Graphic_Shadow)_shadowGraphic?.GetValue(_this);
-    }
-
-    private void SetGraphicInt(Thing _this, Graphic newValue)
-    {
-        if (_graphicInt == null)
-        {
-            _graphicInt = typeof(Thing).GetField("graphicInt", BindingFlags.Instance | BindingFlags.NonPublic);
-            if (_graphicInt == null)
-            {
-                Log.ErrorOnce("Unable to reflect Thing.graphicInt!", 0x12348765);
-            }
-        }
-
-        _graphicInt?.SetValue(_this, newValue);
-    }
-
-    private IntVec3 GetLastCell(Pawn_PathFollower _this)
-    {
-        if (_lastCell != null)
-        {
-            return (IntVec3)_lastCell.GetValue(_this);
-        }
-
-        _lastCell = typeof(Pawn_PathFollower).GetField("lastCell",
+        lastCell = typeof(Pawn_PathFollower).GetField("lastCell",
             BindingFlags.Instance | BindingFlags.NonPublic);
-        if (_lastCell == null)
+        if (lastCell == null)
         {
             Log.ErrorOnce("Unable to reflect Pawn_PathFollower.lastCell!", 0x12348765);
         }
 
-        if (_lastCell is not null)
+        if (lastCell is not null)
         {
-            return (IntVec3)_lastCell?.GetValue(_this)!;
+            return (IntVec3)lastCell?.GetValue(_this)!;
         }
 
         return default;
@@ -99,20 +46,8 @@ public class Hediff_Thief : HediffWithComps
     public override void PostAdd(DamageInfo? dinfo)
     {
         base.PostAdd(dinfo);
-        //oldGraphics = pawn.Drawer.renderer.graphics;
-        //oldShadow = GetShadowGraphic(pawn.Drawer.renderer);
-        //pawn.Drawer.renderer.graphics = new PawnGraphicSet_Invisible(pawn);
-        //var shadowData = new ShadowData { volume = new Vector3(0, 0, 0), offset = new Vector3(0, 0, 0) };
-        //SetShadowGraphic(pawn.Drawer.renderer, new Graphic_Shadow(shadowData));
 
         pawn.stances.CancelBusyStanceHard();
-        //if (lastCarried == null || lastCarried != pawn.carryTracker.CarriedThing)
-        //{
-        //    return;
-        //}
-
-        //lastCarriedGraphic = pawn.carryTracker.CarriedThing.Graphic;
-        //SetGraphicInt(pawn.carryTracker.CarriedThing, new Graphic_Invisible());
     }
 
     public override void Tick()
@@ -125,12 +60,12 @@ public class Hediff_Thief : HediffWithComps
         if (pawn.Downed || pawn.Dead || pawn.pather is { WillCollideNextCell: true })
         {
             pawn.health.RemoveHediff(this);
-            AlertThief(pawn, pawn.pather?.nextCell.GetFirstPawn(pawn.Map));
+            alertThief(pawn, pawn.pather?.nextCell.GetFirstPawn(pawn.Map));
         }
 
-        if (pawn.pather != null && GetLastCell(pawn.pather).GetDoor(pawn.Map) != null)
+        if (pawn.pather != null && getLastCell(pawn.pather).GetDoor(pawn.Map) != null)
         {
-            GetLastCell(pawn.pather).GetDoor(pawn.Map).StartManualCloseBy(pawn);
+            getLastCell(pawn.pather).GetDoor(pawn.Map).StartManualCloseBy(pawn);
         }
 
         if (pawn.Map == null || lastSpottedTick >= Find.TickManager.TicksGame - 125)
@@ -171,7 +106,7 @@ public class Hediff_Thief : HediffWithComps
                             }
 
                             pawn.health.RemoveHediff(this);
-                            AlertThief(pawn, observer);
+                            alertThief(pawn, observer);
                         }
                         else if (observer == null)
                         {
@@ -188,7 +123,7 @@ public class Hediff_Thief : HediffWithComps
                             }
 
                             pawn.health.RemoveHediff(this);
-                            AlertThief(pawn, turret);
+                            alertThief(pawn, turret);
                         }
                     }
                 }
@@ -196,44 +131,11 @@ public class Hediff_Thief : HediffWithComps
 
             num++;
         }
-
-        //var holding = pawn.carryTracker.CarriedThing;
-        //if (lastCarried == holding)
-        //{
-        //    return;
-        //}
-
-        //if (lastCarried != null)
-        //{
-        //    SetGraphicInt(lastCarried, lastCarriedGraphic);
-        //}
-
-        //if (holding == null)
-        //{
-        //    return;
-        //}
-
-        //lastCarried = holding;
-        //lastCarriedGraphic = holding.Graphic;
-        ////SetGraphicInt(lastCarried, new Graphic_Invisible());
     }
 
     public override void PostRemoved()
     {
-        //pawn.Drawer.renderer.graphics = oldGraphics;
-        //pawn.Drawer.renderer.graphics.ResolveAllGraphics();
-        //SetShadowGraphic(pawn.Drawer.renderer, oldShadow);
-        //
-
         var holding = pawn.carryTracker.CarriedThing;
-        //if (holding != null)
-        //{
-        //    SetGraphicInt(holding, lastCarriedGraphic);
-        //}
-        //else if (lastCarried != null)
-        //{
-        //    SetGraphicInt(lastCarried, lastCarriedGraphic);
-        //}
 
         if (!pawn.Spawned && (holding != null || lastCarried != null))
         {
@@ -243,7 +145,7 @@ public class Hediff_Thief : HediffWithComps
         }
     }
 
-    private void AlertThief(Pawn localPawn, Thing observer)
+    private static void alertThief(Pawn localPawn, Thing observer)
     {
         localPawn.jobs.EndCurrentJob(JobCondition.InterruptForced);
         if (!localPawn.Dead)

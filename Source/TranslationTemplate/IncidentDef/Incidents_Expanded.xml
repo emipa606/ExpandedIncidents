@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<LanguageData>
+  <!-- EN: cliques forming -->
+  <Clique.label>cliques forming</Clique.label>
+  <!-- EN: friends quarrel -->
+  <Quarrel.label>friends quarrel</Quarrel.label>
+  <!-- EN: sabotage -->
+  <Sabotage.label>sabotage</Sabotage.label>
+  <!-- EN: thief -->
+  <Thief.label>thief</Thief.label>
+</LanguageData>

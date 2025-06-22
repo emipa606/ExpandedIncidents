@@ -1,0 +1,69 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Defs>
+  <IncidentDef>
+    <defName>Quarrel</defName>
+    <label>friends quarrel</label>
+    <targetTags>
+      <li>Map_PlayerHome</li>
+    </targetTags>
+    <workerClass>ExpandedIncidents.IncidentWorker_Quarrel</workerClass>
+    <baseChance>0.3</baseChance>
+    <minRefireDays>15</minRefireDays>
+    <category>ThreatSmall</category>
+  </IncidentDef>
+  <!-- <IncidentDef> -->
+  <!-- <defName>Homesick</defName> -->
+  <!-- <label>homesick</label> -->
+  <!-- <targetTags> -->
+  <!-- <li>Map_PlayerHome</li> -->
+  <!-- </targetTags> -->
+  <!-- <workerClass>ExpandedIncidents.IncidentWorker_Homesick</workerClass> -->
+  <!-- <baseChance>0.1</baseChance> -->
+  <!-- <minRefireDays>30</minRefireDays> -->
+  <!-- <category>ThreatSmall</category> -->
+  <!-- </IncidentDef> -->
+  <!-- <IncidentDef> -->
+  <!-- <defName>HomesickCured</defName> -->
+  <!-- <label>homesickness cured</label> -->
+  <!-- <targetTags> -->
+  <!-- <li>Map_PlayerHome</li> -->
+  <!-- </targetTags> -->
+  <!-- <workerClass>ExpandedIncidents.IncidentWorker_HomesickCured</workerClass> -->
+  <!-- <baseChance>0.05</baseChance> -->
+  <!-- <minRefireDays>5</minRefireDays> -->
+  <!-- <category>Misc</category> -->
+  <!-- </IncidentDef> -->
+  <IncidentDef>
+    <defName>Clique</defName>
+    <label>cliques forming</label>
+    <targetTags>
+      <li>Map_PlayerHome</li>
+    </targetTags>
+    <workerClass>ExpandedIncidents.IncidentWorker_CliquesForm</workerClass>
+    <baseChance>0.3</baseChance>
+    <minRefireDays>90</minRefireDays>
+    <category>ThreatSmall</category>
+  </IncidentDef>
+  <IncidentDef>
+    <defName>Sabotage</defName>
+    <label>sabotage</label>
+    <targetTags>
+      <li>Map_PlayerHome</li>
+    </targetTags>
+    <workerClass>ExpandedIncidents.IncidentWorker_Sabotage</workerClass>
+    <baseChance>0.5</baseChance>
+    <minRefireDays>120</minRefireDays>
+    <category>ThreatBig</category>
+  </IncidentDef>
+  <IncidentDef>
+    <defName>Thief</defName>
+    <label>thief</label>
+    <targetTags>
+      <li>Map_PlayerHome</li>
+    </targetTags>
+    <workerClass>ExpandedIncidents.IncidentWorker_Thief</workerClass>
+    <baseChance>2.0</baseChance>
+    <minRefireDays>5</minRefireDays>
+    <category>ThreatSmall</category>
+  </IncidentDef>
+</Defs>

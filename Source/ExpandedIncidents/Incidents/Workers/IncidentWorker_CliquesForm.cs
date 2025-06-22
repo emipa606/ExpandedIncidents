@@ -18,12 +18,13 @@ internal class IncidentWorker_CliquesForm : IncidentWorker
         var enemies = from p in map.mapPawns.FreeColonistsSpawned
             where p != pawn && p.relations.OpinionOf(pawn) < -20 && pawn.relations.OpinionOf(p) < -20
             select p;
-        if (!enemies.Any())
+        var enemyArray = enemies as Pawn[] ?? enemies.ToArray();
+        if (!enemyArray.Any())
         {
             return false;
         }
 
-        var enemy = enemies.RandomElement();
+        var enemy = enemyArray.RandomElement();
         pawn.needs.mood.thoughts.memories.TryGainMemory(ThoughtDefOfIncidents.Clique, enemy);
         enemy.needs.mood.thoughts.memories.TryGainMemory(ThoughtDefOfIncidents.Clique, pawn);
         Find.LetterStack.ReceiveLetter("LetterLabelCliques".Translate(),
