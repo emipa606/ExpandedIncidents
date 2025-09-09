@@ -2,4 +2,5 @@
 <LanguageData>
   <EI_SettingHeader>&lt;b>Change events base chance (set to 0 to disable):&lt;/b></EI_SettingHeader>
   <EI_VersionInfo>Installed mod-version: {0}</EI_VersionInfo>
+  <EI_Reset>Reset Settings</EI_Reset>
 </LanguageData>

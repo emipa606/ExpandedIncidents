@@ -8,5 +8,11 @@
     " challenges",
     " conflict"
   ],
-  "LastXmlCleaning": "2025-06-22T17:39:31.6504888+02:00"
+  "LastXmlCleaning": "2025-09-09T21:21:49.4083338+02:00",
+  "Patches": false,
+  "Defs": true,
+  "Assemblies": true,
+  "LinesOfCode": 39711,
+  "LinesOfXML": 5258,
+  "CodeBaseSize": 74
 }
