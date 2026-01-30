@@ -1,5 +1,6 @@
 using System;
 using System.Collections.Generic;
+using System.Linq;
 using System.Reflection;
 using RimWorld;
 using Verse;
@@ -73,63 +74,88 @@ public class Hediff_Thief : HediffWithComps
             return;
         }
 
+        if (ModsConfig.AnomalyActive)
+        {
+            var allDetectors =
+                pawn.Map.listerBuldingOfDefInProximity.GetForCell(pawn.Position, 15f,
+                        ThingDef.Named("ProximityDetector"))?
+                    .Where(thing => ((Building_ProximityDetector)thing).PowerTraderComp.PowerOn);
+            var chance = 1f - (1f / (allDetectors.Count() + 1));
+            if (allDetectors.Any() && Rand.Chance(chance))
+            {
+                pawn.health.RemoveHediff(this);
+                alertThief(pawn, allDetectors.First());
+                return;
+            }
+        }
+
         lastSpottedTick = Find.TickManager.TicksGame;
-        var num = 0;
+        var num = -1;
         while (num < 20)
         {
+            num++;
             var c = pawn.Position + GenRadial.RadialPattern[num];
-            var room = RegionAndRoomQuery.RoomAt(c, pawn.Map);
-            if (c.InBounds(pawn.Map))
+            if (!c.InBounds(pawn.Map))
             {
-                if (RegionAndRoomQuery.RoomAt(c, pawn.Map) == room)
-                {
-                    var thingList = c.GetThingList(pawn.Map);
-                    foreach (var thing in thingList)
-                    {
-                        var observer = thing as Pawn;
-                        if (observer != null && observer != pawn && observer.Faction != null &&
-                            (observer.Faction.IsPlayer || observer.Faction.HostileTo(pawn.Faction)))
-                        {
-                            var observerSight = observer.health.capacities.GetLevel(PawnCapacityDefOf.Sight);
-                            observerSight *= 0.805f + (pawn.Map.glowGrid.GroundGlowAt(pawn.Position) / 4);
-                            if (observer.RaceProps.Animal)
-                            {
-                                observerSight *= 0.9f;
-                            }
-
-                            observerSight = Math.Min(2f, observerSight);
-                            var thiefMoving = pawn.health.capacities.GetLevel(PawnCapacityDefOf.Moving);
-                            var spotChance = 0.8f * thiefMoving / observerSight;
-                            if (!(Rand.Value > spotChance))
-                            {
-                                continue;
-                            }
-
-                            pawn.health.RemoveHediff(this);
-                            alertThief(pawn, observer);
-                        }
-                        else if (observer == null)
-                        {
-                            if (thing is not Building_Turret { Faction.IsPlayer: true } turret)
-                            {
-                                continue;
-                            }
-
-                            var thiefMoving = pawn.health.capacities.GetLevel(PawnCapacityDefOf.Moving);
-                            var spotChance = 0.99f * thiefMoving;
-                            if (!(Rand.Value > spotChance))
-                            {
-                                continue;
-                            }
-
-                            pawn.health.RemoveHediff(this);
-                            alertThief(pawn, turret);
-                        }
-                    }
-                }
+                continue;
             }
 
-            num++;
+            var room = RegionAndRoomQuery.RoomAt(c, pawn.Map);
+            if (room != null && room != pawn.GetRoom())
+            {
+                continue;
+            }
+
+            var thingList = c.GetThingList(pawn.Map);
+            foreach (var thing in thingList)
+            {
+                var observer = thing as Pawn;
+                float thiefMoving;
+                float spotChance;
+                if (observer != null && observer != pawn && observer.Faction != null &&
+                    (observer.Faction.IsPlayer || observer.Faction.HostileTo(pawn.Faction)))
+                {
+                    var observerSight = observer.health.capacities.GetLevel(PawnCapacityDefOf.Sight);
+                    observerSight *= 0.805f + (pawn.Map.glowGrid.GroundGlowAt(pawn.Position) / 4);
+                    if (observer.RaceProps.Animal)
+                    {
+                        observerSight *= 0.9f;
+                    }
+
+                    observerSight = Math.Min(2f, observerSight);
+                    thiefMoving = pawn.health.capacities.GetLevel(PawnCapacityDefOf.Moving);
+                    spotChance = 0.8f * thiefMoving / observerSight;
+                    if (!(Rand.Value > spotChance))
+                    {
+                        continue;
+                    }
+
+                    pawn.health.RemoveHediff(this);
+                    alertThief(pawn, observer);
+                    break;
+                }
+
+                if (observer != null)
+                {
+                    continue;
+                }
+
+                if (thing is not Building_Turret { Faction.IsPlayer: true } turret)
+                {
+                    continue;
+                }
+
+                thiefMoving = pawn.health.capacities.GetLevel(PawnCapacityDefOf.Moving);
+                spotChance = 0.99f * thiefMoving;
+                if (!(Rand.Value > spotChance))
+                {
+                    continue;
+                }
+
+                pawn.health.RemoveHediff(this);
+                alertThief(pawn, turret);
+                break;
+            }
         }
     }
 
