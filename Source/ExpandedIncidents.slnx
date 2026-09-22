@@ -6,4 +6,24 @@
     <BuildType Name="Release" />
   </Configurations>
   <Project Path="ExpandedIncidents/ExpandedIncidents.csproj" />
+  <Folder Name="/XML/1.6/Defs/Incidents/">
+    <File Path="../1.6/Defs/Incidents/Incidents_Expanded.xml" />
+  </Folder>
+  <Folder Name="/XML/About/">
+    <File Path="../About/about.xml" />
+  </Folder>
+  <Folder Name="/XML/1.6/Defs/HediffDefs/">
+    <File Path="../1.6/Defs/HediffDefs/Hediffs_Global_Misc.xml" />
+  </Folder>
+  <Folder Name="/XML/1.6/Defs/ThoughtDefs/">
+    <File Path="../1.6/Defs/ThoughtDefs/Thoughts_Memory_Social.xml" />
+  </Folder>
+  <Folder Name="/XML/1.6/Defs/JobDefs/">
+    <File Path="../1.6/Defs/JobDefs/Jobs_Misc.xml" />
+  </Folder>
+  <Folder Name="/XML/Languages/English/Keyed/">
+    <File Path="../Languages/English/Keyed/Alerts.xml" />
+    <File Path="../Languages/English/Keyed/Letters.xml" />
+    <File Path="../Languages/English/Keyed/Settings.xml" />
+  </Folder>
 </Solution>

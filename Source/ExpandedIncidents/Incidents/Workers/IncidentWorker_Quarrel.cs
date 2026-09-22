@@ -28,8 +28,8 @@ internal class IncidentWorker_Quarrel : IncidentWorker
         }
 
         var friend = friendlies.RandomElement();
-        pawn.needs.mood.thoughts.memories.TryGainMemory(ThoughtDefOfIncidents.Quarrel, friend);
-        friend.needs.mood.thoughts.memories.TryGainMemory(ThoughtDefOfIncidents.Quarrel, pawn);
+        pawn.needs?.mood?.thoughts?.memories?.TryGainMemory(ThoughtDefOfIncidents.Quarrel, friend);
+        friend.needs?.mood?.thoughts?.memories?.TryGainMemory(ThoughtDefOfIncidents.Quarrel, pawn);
         Find.LetterStack.ReceiveLetter("LetterLabelQuarrel".Translate(),
             "ColonistsQuarrel".Translate(pawn.LabelShort, friend.LabelShort), LetterDefOf.NegativeEvent, pawn);
         return true;

@@ -25,8 +25,8 @@ internal class IncidentWorker_CliquesForm : IncidentWorker
         }
 
         var enemy = enemyArray.RandomElement();
-        pawn.needs.mood.thoughts.memories.TryGainMemory(ThoughtDefOfIncidents.Clique, enemy);
-        enemy.needs.mood.thoughts.memories.TryGainMemory(ThoughtDefOfIncidents.Clique, pawn);
+        pawn.needs?.mood?.thoughts?.memories?.TryGainMemory(ThoughtDefOfIncidents.Clique, enemy);
+        enemy.needs?.mood?.thoughts?.memories?.TryGainMemory(ThoughtDefOfIncidents.Clique, pawn);
         Find.LetterStack.ReceiveLetter("LetterLabelCliques".Translate(),
             "CliquesFormed".Translate(pawn.LabelShort, enemy.LabelShort), LetterDefOf.NegativeEvent, pawn);
         return true;

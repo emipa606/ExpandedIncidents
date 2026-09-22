@@ -26,7 +26,7 @@ public static class InteractionWorker_Interacted
 
         var cliqueLeadersPresent = from c in initiator.Map.mapPawns.AllPawnsSpawned
             where c.IsColonist &&
-                  c.needs.mood.thoughts.memories.NumMemoriesOfDef(ThoughtDefOfIncidents.Clique) > 0
+                  c.needs?.mood?.thoughts?.memories?.NumMemoriesOfDef(ThoughtDefOfIncidents.Clique) > 0
             select c;
         var leadersPresent = cliqueLeadersPresent as Pawn[] ?? cliqueLeadersPresent.ToArray();
         var checkInitiator = anyCliqueLinks(initiator, recipient, leadersPresent, out var clique);
@@ -55,9 +55,9 @@ public static class InteractionWorker_Interacted
         var leadersPresent = cliqueLeadersPresent as Pawn[] ?? cliqueLeadersPresent.ToArray();
         if (!(leadersPresent.Contains(initiator) && leadersPresent.Contains(recipient)))
         {
-            recipient.needs.mood.thoughts.memories.TryGainMemory(ThoughtDefOfIncidents.CliqueFollower,
+            recipient.needs?.mood?.thoughts?.memories?.TryGainMemory(ThoughtDefOfIncidents.CliqueFollower,
                 initiator);
-            initiator.needs.mood.thoughts.memories.TryGainMemory(ThoughtDefOfIncidents.CliqueFollower,
+            initiator.needs?.mood?.thoughts?.memories?.TryGainMemory(ThoughtDefOfIncidents.CliqueFollower,
                 recipient);
         }
 
@@ -78,7 +78,7 @@ public static class InteractionWorker_Interacted
         }
 
         //First, check for existing clique follower thoughts so we don't have to go through pawns.
-        var foundCliqueFollowerThoughtRecipient = (from t in recipient.needs.mood.thoughts.memories.Memories
+        var foundCliqueFollowerThoughtRecipient = (from t in recipient.needs?.mood?.thoughts?.memories?.Memories
             where t.def == ThoughtDefOfIncidents.CliqueFollower && t.otherPawn == initiator
             select t).FirstOrDefault() != null;
         if (foundCliqueFollowerThoughtRecipient)
@@ -86,7 +86,7 @@ public static class InteractionWorker_Interacted
             return true; //Clique member starts fight with known clique leader, initiator
         }
 
-        var foundCliqueFollowerThoughtInitiator = (from t in initiator.needs.mood.thoughts.memories.Memories
+        var foundCliqueFollowerThoughtInitiator = (from t in initiator.needs?.mood?.thoughts?.memories?.Memories
             where t.def == ThoughtDefOfIncidents.CliqueFollower && t.otherPawn == recipient
             select t).FirstOrDefault() != null;
         if (foundCliqueFollowerThoughtInitiator)

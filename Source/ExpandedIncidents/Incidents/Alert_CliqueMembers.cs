@@ -18,7 +18,7 @@ public class Alert_CliqueMembers : Alert
 
     private static IEnumerable<Pawn> CliqueLeaders =>
         from c in PawnsFinder.AllMaps_FreeColonistsSpawned
-        where c.needs.mood.thoughts.memories.NumMemoriesOfDef(ThoughtDefOfIncidents.Clique) > 0
+        where c.needs?.mood?.thoughts?.memories?.NumMemoriesOfDef(ThoughtDefOfIncidents.Clique) > 0
         select c;
 
     public override TaggedString GetExplanation()
@@ -40,9 +40,9 @@ public class Alert_CliqueMembers : Alert
                 if (cliqueLeaderWhoMadeUpSomehow != null)
                 {
                     //Kiss and make up.
-                    leader.needs.mood.thoughts.memories.RemoveMemoriesOfDefWhereOtherPawnIs(
+                    leader.needs?.mood?.thoughts?.memories?.RemoveMemoriesOfDefWhereOtherPawnIs(
                         ThoughtDefOfIncidents.Clique, cliqueLeaderWhoMadeUpSomehow);
-                    cliqueLeaderWhoMadeUpSomehow.needs.mood.thoughts.memories.RemoveMemoriesOfDefWhereOtherPawnIs(
+                    cliqueLeaderWhoMadeUpSomehow.needs?.mood?.thoughts?.memories?.RemoveMemoriesOfDefWhereOtherPawnIs(
                         ThoughtDefOfIncidents.Clique, leader);
                 }
 

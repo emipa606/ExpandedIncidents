@@ -1,5 +1,9 @@
 # Changelog for ExpandedIncidents
 
+1.6.3 - Added nullchecks for needs/thoughts to support droids etc.
+Used DeepL to update translations for ChineseSimplified, French, German
+
+
 1.6.2 - Proximity detectors from Anomaly should now have a large change of detecting invisible thiefs
 Used DeepL to update translations for ChineseSimplified, French, German
 

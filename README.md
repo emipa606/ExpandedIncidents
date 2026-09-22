@@ -38,4 +38,4 @@ Expanded Incidents does not require a new save game. It's compatible with everyt
 
  
 
-[![Image](https://img.shields.io/github/v/release/emipa606/ExpandedIncidents?label=latest%20version&style=plastic&color=9f1111&labelColor=black)](https://steamcommunity.com/sharedfiles/filedetails/changelog/2039064466) | tags: conflict, challenges
+[![Image](https://img.shields.io/github/v/release/emipa606/ExpandedIncidents?label=latest%20version&style=plastic&color=9f1111&labelColor=black)](https://steamcommunity.com/sharedfiles/filedetails/changelog/2039064466) | conflict, challenges
